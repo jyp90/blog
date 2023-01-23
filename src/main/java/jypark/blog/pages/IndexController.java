@@ -36,4 +36,9 @@ public class IndexController {
         mv.addObject("detail", pageService.getPageById(pageId));
         return mv;
     }
+
+    @GetMapping("/template")
+    public ModelAndView getTemplates()  {
+        return new ModelAndView("/template");
+    }
 }
