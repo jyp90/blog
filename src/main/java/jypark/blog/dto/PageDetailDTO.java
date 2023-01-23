@@ -12,27 +12,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PageDTO {
+public class PageDetailDTO {
 
-    private Long pageId;
+    private String pageUrl;
     private String title;
     private String content;
+    private String category;
 
     private int likeCount;
     private int viewCount;
     private List<CommentDTO> comments;
 
 
-    public static PageDTO of(Optional<Documents> optionalDocuments) {
+    public static PageDetailDTO of(Optional<Documents> optionalDocuments) {
         if(optionalDocuments.isEmpty()) {
             return null;
         }
 
         Documents doc = optionalDocuments.get();
-        PageDTO dto = PageDTO.builder()
-            .pageId(doc.getId())
+        PageDetailDTO dto = PageDetailDTO.builder()
+            .pageUrl("/" + doc.getId())
             .title(doc.getTitle())
             .content(doc.getContent())
+            .category(doc.getCategoryType() == null ? "카테고리 없음" : doc.getCategoryType().getView())
             .likeCount(doc.getLikeCount())
             .viewCount(doc.getViewCount())
             .comments(CommentDTO.of(doc.getComments()))

@@ -1,9 +1,7 @@
 package jypark.blog.services;
 
-import java.util.List;
 import java.util.Optional;
-import jypark.blog.dto.PageDTO;
-import jypark.blog.dto.PageListDTO;
+import jypark.blog.dto.PageDetailDTO;
 import jypark.blog.dto.PageListDTO.PageListWrapperDTO;
 import jypark.blog.entities.Documents;
 import jypark.blog.repositories.PageRepository;
@@ -18,9 +16,9 @@ public class PageService {
 
     private final PageRepository pageRepository;
 
-    public PageDTO getPageById(Long pageId) {
+    public PageDetailDTO getPageById(Long pageId) {
         final Optional<Documents> optionalDocuments = pageRepository.findById(pageId);
-        return PageDTO.of(optionalDocuments);
+        return PageDetailDTO.of(optionalDocuments);
     }
 
     public PageListWrapperDTO getPages(Pageable pageable) {

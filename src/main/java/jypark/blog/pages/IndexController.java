@@ -31,7 +31,7 @@ public class IndexController {
 
     @GetMapping("/{pageId}")
     public ModelAndView getPages(@PathVariable Long pageId) {
-        final ModelAndView mv = new ModelAndView("/page");
+        final ModelAndView mv = new ModelAndView("/page2");
         mv.addObject("title", TITLE);
         mv.addObject("detail", pageService.getPageById(pageId));
         return mv;
