@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">>
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title} + ' - ' + ${detail.title}"></title>
+  <link rel="alternate" type="application/rss+xml" th:title="${detail.title}" th:href="'/pages/' + ${detail.pageId}"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:utext="${detail.content}"></div>
+
+<div>
+좋아요 : <div th:text="${detail.likeCount}"></div>
+</div>
+<div>
+읽은 횟수 : <div th:text="${detail.viewCount}"></div>
+</div>
+<div>
+  <div th:each="c: ${detail.comments}">
+    <li>
+      <ul th:text="${c.author}"></ul>
+      <div th:text="${c.comment}"></div>
+    </li>
+  </div>
+</div>
+</body>
+</html>

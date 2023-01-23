@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">>
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}">뇽의 블로그 메인 페이지</title>
+  <link rel="alternate" type="application/rss+xml" th:title="${title}"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<div th:each="page: ${wrapper.list}">
+  <a th:href="'/pages/' + ${page.pageId}">
+    <span class="row" style="background-color: red;">
+      <h1 th:text="${page.title}"></h1>
+      <h3 th:text="${page.content}"></h3>
+      like: <h5 th:text="${page.likeCount}"></h5>
+      view: <h5 th:text="${page.viewCount}"></h5>
+      comments: <h5 th:text="${page.commentCount}"></h5>
+    </span>
+  </a>
+</div>
+
+</body>
+</html>
