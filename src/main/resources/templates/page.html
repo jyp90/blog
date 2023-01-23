@@ -5,6 +5,7 @@
   <title th:text="${title} + ' - ' + ${detail.title}"></title>
   <link rel="alternate" type="application/rss+xml" th:title="${detail.title}" th:href="'/pages/' + ${detail.pageId}"/>
   <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="icon" sizes="32x32" th:href="@{/images/favicon.ico}" type="image/png">
 </head>
 <body>
 <div th:utext="${detail.content}"></div>

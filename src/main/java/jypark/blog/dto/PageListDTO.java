@@ -12,8 +12,7 @@ import org.springframework.data.domain.Page;
 @NoArgsConstructor
 public class PageListDTO {
 
-
-    private Long pageId;
+    private String detail;
     private String title;
     private String content;
 
@@ -22,7 +21,7 @@ public class PageListDTO {
     private int commentCount;
 
     public PageListDTO(Documents doc) {
-        this.pageId = doc.getId();
+        this.detail = "/" + doc.getId();
         this.title = doc.getTitle();
         this.content = doc.getContent() == null ? ""
             : doc.getContent().length() > 100 ? doc.getContent().substring(0, 100) + "..."
