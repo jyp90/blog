@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PageListDTO {
+public class PageListPayload {
 
     private String detail;
 
@@ -23,7 +23,7 @@ public class PageListDTO {
     private int viewCount;
     private int commentCount;
 
-    public PageListDTO(Documents doc) {
+    public PageListPayload(Documents doc) {
         this.detail = "/" + doc.getId();
         this.author = doc.getAuthor();
         this.title = doc.getTitle();
@@ -36,11 +36,11 @@ public class PageListDTO {
     @Data
     @NoArgsConstructor
     public static class PageListWrapperDTO {
-        private List<PageListDTO> list;
+        private List<PageListPayload> list;
         private int totalCount;
 
         public PageListWrapperDTO(List<Documents> documents, int totalCount) {
-            this.list = documents.stream().map(doc -> new PageListDTO(doc)).toList();
+            this.list = documents.stream().map(doc -> new PageListPayload(doc)).toList();
             this.totalCount = totalCount;
         }
 

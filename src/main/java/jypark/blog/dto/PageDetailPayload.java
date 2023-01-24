@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PageDetailDTO {
+public class PageDetailPayload {
 
     private String pageUrl;
     private String author;
@@ -24,20 +24,20 @@ public class PageDetailDTO {
 
     private int likeCount;
     private int viewCount;
-    private List<CommentDTO> comments;
+    private List<ReplyPayload> comments;
 
     private List<RecentPagePayload> recentPagePayloads;
 
     private String createdAt;
 
 
-    public static PageDetailDTO of(Optional<Documents> optionalDocuments) {
+    public static PageDetailPayload of(Optional<Documents> optionalDocuments) {
         if(optionalDocuments.isEmpty()) {
             return null;
         }
 
         Documents doc = optionalDocuments.get();
-        PageDetailDTO dto = PageDetailDTO.builder()
+        PageDetailPayload dto = PageDetailPayload.builder()
             .pageUrl("/" + doc.getId())
             .author(doc.getAuthor())
             .title(doc.getTitle())
@@ -45,7 +45,7 @@ public class PageDetailDTO {
             .category(doc.getCategoryType() == null ? "카테고리 없음" : doc.getCategoryType().getView())
             .likeCount(doc.getLikeCount())
             .viewCount(doc.getViewCount())
-            .comments(CommentDTO.of(doc.getComments()))
+            .comments(ReplyPayload.of(doc.getComments()))
             .createdAt(toCreatedAt(doc.getCreatedAt()))
             .build();
         return dto;

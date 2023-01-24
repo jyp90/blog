@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import jypark.blog.entities.enumerates.CategoryType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Data;
 import lombok.Getter;
@@ -24,6 +25,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Documents {
 
     @Id

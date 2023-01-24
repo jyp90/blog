@@ -8,17 +8,17 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CommentDTO {
+public class ReplyPayload {
 
     private String comment;
     private String author;
 
-    public CommentDTO(Comments comments) {
+    public ReplyPayload(Comments comments) {
         this.comment = comments.getComment();
         this.author = comments.getAuthor();
     }
 
-    public static List<CommentDTO> of(List<Comments> list) {
-        return list.stream().map(o -> new CommentDTO(o)).collect(Collectors.toList());
+    public static List<ReplyPayload> of(List<Comments> list) {
+        return list.stream().map(o -> new ReplyPayload(o)).collect(Collectors.toList());
     }
 }

@@ -1,8 +1,8 @@
 package jypark.blog.services;
 
 import java.util.Optional;
-import jypark.blog.dto.PageDetailDTO;
-import jypark.blog.dto.PageListDTO.PageListWrapperDTO;
+import jypark.blog.dto.PageDetailPayload;
+import jypark.blog.dto.PageListPayload.PageListWrapperDTO;
 import jypark.blog.dto.RecentPagePayload.RecentPageListPayload;
 import jypark.blog.entities.Documents;
 import jypark.blog.repositories.PageRepository;
@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +19,9 @@ public class PageService {
 
     private final PageRepository pageRepository;
 
-    public PageDetailDTO getPageById(Long pageId) {
+    public PageDetailPayload getPageById(Long pageId) {
         final Optional<Documents> optionalDocuments = pageRepository.findById(pageId);
-        return PageDetailDTO.of(optionalDocuments);
+        return PageDetailPayload.of(optionalDocuments);
     }
 
     public PageListWrapperDTO getPages(Pageable pageable) {
