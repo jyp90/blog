@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/header :: headerFragment"></head>
+<head>
+  <title>404 Not Found</title>
+</head>
+<body>
+<div style="top: 40px;"> </div>
+  <div class="ui active intro tab" data-tab="introduction">
+
+    <div class="ui main container">
+
+      <h2 class="ui dividing header">404 Not Found<a class="anchor" id="introduction"></a></h2>
+
+      <div class="introduction">
+
+        <h3 class="ui header">Page doesn't exist</h3>
+
+        <p>A container is an element designed to contain page elements to a reasonable maximum width based on the size of a user's screen. This is useful to couple with other UI elements like <a href="/collections/grid.html">grid</a> or <a href="/collections/menu.html">menu</a> to restrict their width to a reasonable size for display.</p>
+
+
+        <h3 class="ui header">Container Sizes</h3>
+
+        <p>Containers are designed to responsively adjust their maximum width based on the size of the screen on which they are appearing.</p>
+
+        <table class="ui celled definition table">
+          <thead>
+          <tr><th class="collapsing"></th>
+            <th>Mobile</th>
+            <th>Tablet</th>
+            <th class="single line">Small Monitor</th>
+            <th class="single line">Large Monitor</th>
+          </tr></thead>
+          <tbody>
+          <tr>
+            <td>Width</td>
+            <td>100%</td>
+            <td>
+              723px
+              <i class="circle help link icon" data-html="Maximum device width with two <code>1em</code> gutters and a <code>17px</code> scrollbar width. <div class='ui divider'></div> <code>768 - (14 * (1 * 2)) - 17</code>">
+              </i></td>
+            <td>
+              933px
+              <i class="circle help link icon" data-html="Maximum device width with two <code>1.5em</code> gutters and a <code>17px</code> scrollbar width. <div class='ui divider'></div> <code>992 - (14 * (1.5 * 2)) - 17</code>">
+              </i></td>
+            <td>
+              1127px
+              <i class="circle help link icon" data-html="Maximum device width with two <code>2em</code> gutters and a <code>17px</code> scrollbar width. <div class='ui divider'></div> <code>1200 - (14 * (2 * 2)) - 17</code>">
+              </i></td>
+          </tr>
+          <tr>
+            <td class="single line">Gutter Size</td>
+            <td>1em</td>
+            <td>Fluid</td>
+            <td>Fluid</td>
+            <td>Fluid</td>
+          </tr>
+          <tr>
+            <td>Variable</td>
+            <td><code>$largestMobileScreen</code></td>
+            <td><code>$mobileBreakpoint</code></td>
+            <td><code>$smallMonitorBreakpoint</code></td>
+            <td><code>$largeMonitorBreakpoint</code></td>
+          </tr>
+          <tr>
+            <td>Device Width</td>
+            <td>below 768px</td>
+            <td>768px - 991px</td>
+            <td>992px - 1200px</td>
+            <td>above 1200px</td>
+          </tr>
+          </tbody>
+        </table>
+        <h3 class="ui header">Responsive Visibility</h3>
+        <p>Since variations in Semantic UI are only assigned in the scope of components, there are no "free floating" responsive class names, however some components include responsive variations to help ease responsive design. <a href="/collections/grid.html#device-visibility">Grid</a> for example, includes responsive classes for hiding or showing <code>column</code>, <code>row</code> based on device type.</p>
+
+        <a href="/collections/grid.html#device-visibility" class="ui secondary button">See grid responsive variations <i class="right chevron icon"></i></a>
+
+        <h3 class="ui header">Determining Maximum Widths</h3>
+
+        <p>Containers appear at the same width at each device size. This size is calculated programmatically by determining the maximum device width available within a device breakpoint, given a desired minimum gutter size.</p>
+
+        <p>For example to determine tablet container size the following formula is used:</p>
+
+        <div class="ui existing segment"><pre><code class="code less"><span class="comment">/* In site.variables */</span>
+<span class="variable">@tabletBreakpoint :</span> <span class="number">768px</span>;
+<span class="variable">@scrollbarWidth :</span> <span class="number">17px</span>; <span class="comment">/* This is a constant */</span>
+ <span class="comment">/* In container.variables */</span>
+<span class="variable">@tabletMinimumGutter :</span> (<span class="variable">@emSize</span>  * <span class="number">1</span>); <span class="comment">/* require 1em gutter */</span>
+<span class="variable">@tabletWidth :</span> <span class="variable">@tabletBreakpoint</span> - (<span class="variable">@tabletMinimumGutter</span> * <span class="number">2</span>) - <span class="variable">@scrollbarWidth</span>;</code></pre></div>
+
+        <p>This is the same as <code>768px - (14px * 2) - 17px</code> or <code>723px</code></p>
+
+        <p>Adjusting site breakpoints in <code>site.variables</code> to use custom values will automatically adjust container widths.</p>
+
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

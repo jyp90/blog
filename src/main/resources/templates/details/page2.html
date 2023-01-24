@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>템플릿 페이지</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/content.css}">
+<!--  <link rel="stylesheet" th:href="@{/css/font.css}">-->
+  <link rel="icon" sizes="32x32" th:href="@{/images/favicon.ico}" type="image/png">
+</head>
+<body>
+
+<div style="height: auto !important;">
+  <div class="article_skin" style="height: auto !important;">
+    <div class="skin_view" style="height: auto !important;">
+      <div class="area_title">
+        <strong class="tit_category" th:text="${detail.category}">Self Study/Developer Life</strong>
+        <h3 class="tit_post"><a th:href="${detail.pageUrl}" th:text="${detail.title}"></a></h3>
+        <span class="txt_detail my_post"><span th:text="${detail.author}"></span>
+						<span class="txt_bar"></span><span th:text="${detail.createdAt}">2023. 1. 5. 15:13</span>
+
+					</span>
+      </div>
+      <div class="area_view" style="height: auto !important;" th:utext="${detail.content}"></div>
+        <div class="area_etc">
+
+          <dl class="list_tag">
+            <dt class="tit_tag">TAG</dt>
+            <dd class="desc_tag"><a href="/tag/lean" rel="tag">lean</a>, <a
+                href="/tag/%EC%8A%A4%ED%83%80%ED%8A%B8%EC%97%85" rel="tag">스타트업</a>, <a
+                href="/tag/%EC%9A%A9%EC%96%B4%20%EC%A0%95%EB%A6%AC" rel="tag">용어 정리</a></dd>
+          </dl>
+
+        </div>
+
+
+        <div class="area_reply ">
+
+
+          <strong class="tit_reply">댓글
+            <button type="button" class="btn_reply on" onclick="$.Area.Comment.changeStatus();">
+              <span id="commentCount391_0">3</span>
+              <span class="ico_skin ico_reply">댓글펼치기</span>
+            </button>
+          </strong>
+
+
+          <!-- 대체텍스트 댓글펼치기/댓글접기 변경 -->
+          <div id="entry391Comment">
+            <button type="button" class="btn_replymore">이전 댓글 보기</button>
+
+            <ul class="list_reply">
+
+
+              <li id="comment17641539" class="rp_general">
+
+                <img
+                    src="//i1.daumcdn.net/thumb/C100x100/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&amp;fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F3374906%2Fattach%2Ffd3477e7bf2346e080aad300d24a6f9b"
+                    width="50" height="50" class="img_profile" alt="프로필사진">
+
+                <span class="reply_content">
+															<span class="tit_nickname"><img
+                                  src="https://hackingstudypad.tistory.com/favicon.ico" width="16"
+                                  height="16" alt="Favicon of https://hackingstudypad.tistory.com"
+                                  onerror="this.onerror=null;this.parentNode.removeChild(this)"> <a
+                                  href="https://hackingstudypad.tistory.com"
+                                  onclick="return openLinkInNewWindow(this)">SecurityMan</a> <span
+                                  class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">포스팅 잘 보고 갑니다ㅎㅎ</span>
+															<span class="txt_date">2023.01.05 16:38 <a
+                                  href="/toolbar/popup/abuseReport/?entryId=391&amp;commentId=17641539"
+                                  onclick="window.open(this.href, 'ThisBlogReportPopup', 'width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no'); return false;">신고</a></span>
+														</span>
+                <button type="button" class="btn_replymenu">
+                  <span class="ico_skin ico_replymenu">댓글 메뉴</span>
+                </button>
+                <div class="my_edit">
+                  <a href="/391#comment17641539" class="link_edit">댓글주소</a>
+                  <a href="#" onclick="deleteComment(17641539);return false"
+                     class="link_edit">수정/삭제</a>
+                  <a href="#" onclick="commentComment(17641539); return false" class="link_edit">댓글쓰기</a>
+                </div>
+              </li>
+              <li id="comment17641802" class="rp_general">
+
+                <img
+                    src="//i1.daumcdn.net/thumb/C100x100/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&amp;fname=https%3A%2F%2Ftistory1.daumcdn.net%2Ftistory%2F5331992%2Fattach%2F07c6d81e715d4b159d4589506071e087"
+                    width="50" height="50" class="img_profile" alt="프로필사진">
+
+                <span class="reply_content">
+															<span class="tit_nickname"><img
+                                  src="https://tmaxxx.tistory.com/favicon.ico" width="16"
+                                  height="16" alt="Favicon of https://tmaxxx.tistory.com"
+                                  onerror="this.onerror=null;this.parentNode.removeChild(this)"> <a
+                                  href="https://tmaxxx.tistory.com"
+                                  onclick="return openLinkInNewWindow(this)">Tmax</a><span
+                                  class="tistoryProfileLayerTrigger"
+                                  onclick="TistoryProfile.show(event, this, {&quot;blogId&quot;:&quot;5331992&quot;,&quot;title&quot;:&quot;Tmaxs Darkroom&quot;,&quot;url&quot;:&quot;https:\/\/tmaxxx.tistory.com&quot;,&quot;nickname&quot;:&quot;Tmax&quot;,&quot;items&quot;:[],&quot;isSubscriber&quot;:true,&quot;device&quot;:&quot;web_pc&quot;}); return false;"></span> <span
+                                  class="ico_skin ico_secret"></span></span>
+															<span class="txt_reply">포스팅 잘봤습니다. 편안한 저녁 되시길 바랍니다.</span>
+															<span class="txt_date">2023.01.05 19:21 <a
+                                  href="/toolbar/popup/abuseReport/?entryId=391&amp;commentId=17641802"
+                                  onclick="window.open(this.href, 'ThisBlogReportPopup', 'width=550, height=510, toolbar=no, menubar=no, status=no, scrollbars=no'); return false;">신고</a></span>
+														</span>
+                <button type="button" class="btn_replymenu">
+                  <span class="ico_skin ico_replymenu">댓글 메뉴</span>
+                </button>
+                <div class="my_edit">
+                  <a href="/391#comment17641802" class="link_edit">댓글주소</a>
+                  <a href="#" onclick="deleteComment(17641802);return false"
+                     class="link_edit">수정/삭제</a>
+                  <a href="#" onclick="commentComment(17641802); return false" class="link_edit">댓글쓰기</a>
+                </div>
+              </li>
+              <li id="comment17653791" class="re_reply rp_admin">
+
+                <img
+                    src="//i1.daumcdn.net/thumb/C100x100/?fname=https://img1.daumcdn.net/thumb/C100x100/?scode=mtistory2&amp;fname=https%3A%2F%2Ftistory2.daumcdn.net%2Ftistory%2F3277145%2Fattach%2Fe8e5bc5a341143eaa68b868f2832721c"
+                    width="50" height="50" class="img_profile" alt="프로필사진">
+
+                <span class="reply_content">
+																	<span class="tit_nickname"><img
+                                      src="https://abbo.tistory.com/favicon.ico" width="16"
+                                      height="16" alt="Favicon of https://abbo.tistory.com"
+                                      onerror="this.onerror=null;this.parentNode.removeChild(this)"> <a
+                                      href="https://abbo.tistory.com"
+                                      onclick="return openLinkInNewWindow(this)">니용</a> <span
+                                      class="ico_skin ico_secret"></span></span>
+																	<span class="txt_reply">감사합니다 ^-^ 즐거운 한주 되세요~</span>
+																	<span class="txt_date">2023.01.11 00:18</span>
+																</span>
+                <button type="button" class="btn_replymenu">
+                  <span class="ico_skin ico_replymenu">댓글 메뉴</span>
+                </button>
+                <div class="my_edit">
+                  <a href="/391#comment17653791" class="link_edit">댓글주소</a>
+                  <a href="#" onclick="deleteComment(17653791); return false;" class="link_edit">수정/삭제</a>
+                </div>
+              </li>
+              <li id="none_display_division_for_comment_list_391" style="display: none;"></li>
+            </ul>
+
+
+            <form method="post" action="/comment/add/391" onsubmit="return false" style="margin: 0">
+
+              <fieldset class="fld_reply">
+                <legend class="screen_out">댓글쓰기 폼</legend>
+                <div class="reply_write ">
+                  <label for="comment" class="lab_write"></label>
+                  <textarea id="comment" name="comment" class="tf_reply"
+                            placeholder="여러분의 소중한 댓글을 입력해주세요" tabindex="1"></textarea>
+                </div>
+                <div class="reply_writer">
+
+
+                  <div class="writer_check">
+				<span class="check_secret ">
+					<input type="checkbox" name="secret" id="secret" class="inp_secret" tabindex="4">
+					<label for="secret" class="lab_secret">
+						<span class="ico_skin ico_check"></span>비밀글
+					</label>
+				</span>
+
+                  </div>
+
+
+                  <div class="writer_btn">
+                    <button type="submit" class="btn_enter"
+                            onclick="addComment(this, 391); return false;" tabindex="5">입력
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="mEtc" class="wrap_etc">
+      <div class="inner_aside">
+        <div class="revenue_unit_wrap">
+          <!--        <div class="revenue_unit_item adsense responsive">-->
+          <!--          <script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async="async"></script>-->
+          <!--          <ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-host="ca-host-pub-9691043933427338" data-ad-client="ca-pub-9031205270159862" data-ad-format="auto" data-adsbygoogle-status="done"><div id="aswift_3_host" style="border: none; height: 280px; width: 820px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"></div></ins>-->
+          <!--          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>-->
+          <!--        </div>-->
+        </div>
+        <!-- 최근에 올라온 글 -->
+        <div class="box_aside">
+          <strong>최근에 올라온 글</strong>
+          <ul class="list_board">
+            <li th:each="recent : ${recents.list}">
+              <a th:href="${recent.href}" class="link_board" th:text="${recent.title}"></a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 방문자수 -->
+        <div class="box_aside lst">
+          <dl class="list_total">
+            <dt>Total</dt>
+            <dd>228,489</dd>
+          </dl>
+          <dl class="list_visitor">
+            <dt>Today</dt>
+            <dd>111</dd>
+          </dl>
+          <dl class="list_visitor">
+            <dt>Yesterday</dt>
+            <dd>206</dd>
+          </dl>
+        </div>
+
+        <!-- 링크 -->
+        <div class="box_aside">
+          <strong>링크</strong>
+          <ul class="list_board">
+
+          </ul>
+        </div>
+
+        <!-- 태그 클라우드 -->
+        <div class="box_aside">
+          <strong>TAG</strong>
+          <ul class="list_tag">
+
+            <li><a href="/tag/ubuntu" class="link_tag cloud4">ubuntu</a></li>
+
+            <li><a href="/tag/jenkins" class="link_tag cloud4">jenkins</a></li>
+
+            <li><a href="/tag/JPA" class="link_tag cloud3">JPA</a></li>
+
+            <li><a href="/tag/next%20js" class="link_tag cloud4">next js</a></li>
+
+            <li><a href="/tag/%EA%B0%9C%EB%B0%9C%EC%9E%90" class="link_tag cloud3">개발자</a></li>
+
+            <li><a href="/tag/Spring%20Batch" class="link_tag cloud3">Spring Batch</a></li>
+
+            <li><a href="/tag/redis" class="link_tag cloud4">redis</a></li>
+
+            <li><a href="/tag/Annotation" class="link_tag cloud3">Annotation</a></li>
+
+            <li><a href="/tag/blockchain" class="link_tag cloud4">blockchain</a></li>
+
+            <li><a href="/tag/AWS" class="link_tag cloud4">AWS</a></li>
+
+            <li><a href="/tag/intellij" class="link_tag cloud3">intellij</a></li>
+
+            <li><a href="/tag/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8"
+                   class="link_tag cloud3">자바스크립트</a></li>
+
+            <li><a href="/tag/JavaScript" class="link_tag cloud1">JavaScript</a></li>
+
+            <li><a href="/tag/Server" class="link_tag cloud4">Server</a></li>
+
+            <li><a href="/tag/Thymeleaf" class="link_tag cloud3">Thymeleaf</a></li>
+
+            <li><a href="/tag/%EC%BD%94%EB%A1%9C%EB%82%98%20%ED%99%95%EC%A7%84"
+                   class="link_tag cloud4">코로나 확진</a></li>
+
+            <li><a href="/tag/Kotlin" class="link_tag cloud3">Kotlin</a></li>
+
+            <li><a href="/tag/%EA%B0%9C%EB%B0%9C" class="link_tag cloud4">개발</a></li>
+
+            <li><a href="/tag/MySQL" class="link_tag cloud3">MySQL</a></li>
+
+            <li><a href="/tag/Database" class="link_tag cloud4">Database</a></li>
+
+            <li><a href="/tag/react" class="link_tag cloud4">react</a></li>
+
+            <li><a href="/tag/Java" class="link_tag cloud2">Java</a></li>
+
+            <li><a href="/tag/%EC%BD%94%EB%94%A9" class="link_tag cloud3">코딩</a></li>
+
+            <li><a href="/tag/%ED%83%80%EC%9E%84%EB%A6%AC%ED%94%84" class="link_tag cloud4">타임리프</a>
+            </li>
+
+            <li><a href="/tag/TypeScript" class="link_tag cloud3">TypeScript</a></li>
+
+            <li><a href="/tag/Developer" class="link_tag cloud3">Developer</a></li>
+
+            <li><a href="/tag/%EC%BD%94%ED%8B%80%EB%A6%B0" class="link_tag cloud3">코틀린</a></li>
+
+            <li><a href="/tag/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4"
+                   class="link_tag cloud4">인텔리제이</a></li>
+
+            <li><a href="/tag/git" class="link_tag cloud4">git</a></li>
+
+            <li><a href="/tag/%EC%9E%90%EB%B0%94" class="link_tag cloud4">자바</a></li>
+
+          </ul>
+          <a href="https://abbo.tistory.com/tag" class="link_more">more</a>
+        </div>
+
+        <!-- 달력 -->
+        <div class="box_aside">
+          <table class="tt-calendar" cellpadding="0" cellspacing="1"
+                 style="width: 100%; table-layout: fixed">
+            <caption class="cal_month"><a href="/archive/202212" title="1개월 앞의 달력을 보여줍니다.">«</a>
+              &nbsp; <a href="/archive/202301" title="현재 달의 달력을 보여줍니다.">2023/01</a> &nbsp; <a
+                  href="/archive/202302" title="1개월 뒤의 달력을 보여줍니다.">»</a></caption>
+            <thead>
+            <tr>
+              <th class="cal_week2">일</th>
+              <th class="cal_week1">월</th>
+              <th class="cal_week1">화</th>
+              <th class="cal_week1">수</th>
+              <th class="cal_week1">목</th>
+              <th class="cal_week1">금</th>
+              <th class="cal_week1">토</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="cal_week cal_current_week">
+              <td class="cal_day cal_day3 cal_day_sunday">1</td>
+              <td class="cal_day cal_day3">2</td>
+              <td class="cal_day cal_day3">3</td>
+              <td class="cal_day cal_day3">4</td>
+              <td class="cal_day cal_day3"><a href="/archive/20230105" class="cal_click">5</a></td>
+              <td class="cal_day cal_day3">6</td>
+              <td class="cal_day cal_day3">7</td>
+            </tr>
+            <tr class="cal_week">
+              <td class="cal_day cal_day3 cal_day_sunday">8</td>
+              <td class="cal_day cal_day3">9</td>
+              <td class="cal_day cal_day3">10</td>
+              <td class="cal_day cal_day3">11</td>
+              <td class="cal_day cal_day3">12</td>
+              <td class="cal_day cal_day3">13</td>
+              <td class="cal_day cal_day3">14</td>
+            </tr>
+            <tr class="cal_week">
+              <td class="cal_day cal_day3 cal_day_sunday">15</td>
+              <td class="cal_day cal_day3">16</td>
+              <td class="cal_day cal_day3">17</td>
+              <td class="cal_day cal_day3">18</td>
+              <td class="cal_day cal_day3">19</td>
+              <td class="cal_day cal_day3">20</td>
+              <td class="cal_day cal_day3">21</td>
+            </tr>
+            <tr class="cal_week">
+              <td class="cal_day cal_day3 cal_day_sunday">22</td>
+              <td class="cal_day cal_day4"><a href="/archive/20230123" class="cal_click">23</a></td>
+              <td class="cal_day cal_day3">24</td>
+              <td class="cal_day cal_day3">25</td>
+              <td class="cal_day cal_day3">26</td>
+              <td class="cal_day cal_day3">27</td>
+              <td class="cal_day cal_day3">28</td>
+            </tr>
+            <tr class="cal_week">
+              <td class="cal_day cal_day3 cal_day_sunday">29</td>
+              <td class="cal_day cal_day3">30</td>
+              <td class="cal_day cal_day3">31</td>
+              <td class="cal_day1 cal_day2"></td>
+              <td class="cal_day1 cal_day2"></td>
+              <td class="cal_day1 cal_day2"></td>
+              <td class="cal_day1 cal_day2"></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 글 보관함 -->
+        <div class="box_aside lst">
+          <strong>글 보관함</strong>
+          <ul class="list_keep">
+
+            <li><a href="/archive/202301" class="link_keep">2023/01</a> (2)</li>
+
+            <li><a href="/archive/202212" class="link_keep">2022/12</a> (24)</li>
+
+            <li><a href="/archive/202211" class="link_keep">2022/11</a> (3)</li>
+
+            <li><a href="/archive/202210" class="link_keep">2022/10</a> (13)</li>
+
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -2,9 +2,12 @@ package jypark.blog.pages;
 
 import static jypark.blog.utils.BlogVariables.*;
 
-import jypark.blog.dto.PageListDTO.PageListWrapperDTO;
+import jypark.blog.dto.PageListPayload.PageListWrapperDTO;
+import jypark.blog.exceptions.PageNotFoundException;
+import jypark.blog.services.CategoryService;
 import jypark.blog.services.PageService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +18,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/")
-public class IndexController {
+public class MainMVController {
+
+    @Value("${insert.key}")
+    private String insertKey;
 
     private final PageService pageService;
 
+    private final CategoryService categoryService;
+
     @GetMapping({"/", "/list", "/index"})
     public ModelAndView getMainList(Pageable pageable) {
-        final ModelAndView mv = new ModelAndView("/list");
+        final ModelAndView mv = new ModelAndView("list");
         final PageListWrapperDTO wrapper = pageService.getPages(pageable);
         mv.addObject("wrapper", wrapper);
         mv.addObject("title", TITLE);
@@ -31,7 +39,7 @@ public class IndexController {
 
     @GetMapping("/{pageId}")
     public ModelAndView getPages(@PathVariable Long pageId) {
-        final ModelAndView mv = new ModelAndView("/page2");
+        final ModelAndView mv = new ModelAndView("details/page2");
         mv.addObject("title", TITLE);
         mv.addObject("detail", pageService.getPageById(pageId));
         mv.addObject("recents", pageService.getRecentPages(pageId));
@@ -40,6 +48,16 @@ public class IndexController {
 
     @GetMapping("/template")
     public ModelAndView getTemplates()  {
-        return new ModelAndView("/template");
+        return new ModelAndView("details/template");
+    }
+
+    @GetMapping("/insert/{key}")
+    public ModelAndView insertPages(@PathVariable String key)  {
+        if(key.equals(insertKey)) {
+            final ModelAndView mv = new ModelAndView("details/insert");
+            mv.addObject("categories", categoryService.getCategories());
+            return mv;
+        }
+        throw new PageNotFoundException("페이지를 찾을 수 없습니다.");
     }
 }
