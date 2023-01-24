@@ -31,6 +31,7 @@ public class Documents {
     @Column(name = "documents_id")
     private Long id;
 
+    private String author;
     private String title;
     @Column(columnDefinition = "TEXT")
     private String content;

@@ -1,4 +1,4 @@
-package jypark.blog;
+package jypark.blog.utils;
 
 public class BlogVariables {
 

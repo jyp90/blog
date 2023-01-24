@@ -1,6 +1,6 @@
 package jypark.blog.pages;
 
-import static jypark.blog.BlogVariables.*;
+import static jypark.blog.utils.BlogVariables.*;
 
 import jypark.blog.dto.PageListDTO.PageListWrapperDTO;
 import jypark.blog.services.PageService;
@@ -34,6 +34,7 @@ public class IndexController {
         final ModelAndView mv = new ModelAndView("/page2");
         mv.addObject("title", TITLE);
         mv.addObject("detail", pageService.getPageById(pageId));
+        mv.addObject("recents", pageService.getRecentPages(pageId));
         return mv;
     }
 

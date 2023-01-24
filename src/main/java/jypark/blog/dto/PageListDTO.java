@@ -2,6 +2,7 @@ package jypark.blog.dto;
 
 import java.util.List;
 import jypark.blog.entities.Documents;
+import jypark.blog.utils.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,8 @@ import org.springframework.data.domain.Page;
 public class PageListDTO {
 
     private String detail;
+
+    private String author;
     private String title;
     private String content;
 
@@ -22,10 +25,9 @@ public class PageListDTO {
 
     public PageListDTO(Documents doc) {
         this.detail = "/" + doc.getId();
+        this.author = doc.getAuthor();
         this.title = doc.getTitle();
-        this.content = doc.getContent() == null ? ""
-            : doc.getContent().length() > 100 ? doc.getContent().substring(0, 100) + "..."
-                : doc.getContent();
+        this.content = StringUtils.summarize(doc.getContent());
         this.likeCount = doc.getLikeCount();
         this.viewCount = doc.getViewCount();
         this.commentCount = doc.getComments().size();

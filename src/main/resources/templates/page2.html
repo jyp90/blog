@@ -8,26 +8,14 @@
 </head>
 <body>
 
-<div id="cMain" style="height: auto !important;">
-  <div id="mArticle" class="article_skin" style="height: auto !important;">
+<div style="height: auto !important;">
+  <div class="article_skin" style="height: auto !important;">
     <div class="skin_view" style="height: auto !important;">
-      <h2 id="dkBody" class="screen_out">티스토리 뷰</h2>
       <div class="area_title">
         <strong class="tit_category" th:text="${detail.category}">Self Study/Developer Life</strong>
         <h3 class="tit_post"><a th:href="${detail.pageUrl}" th:text="${detail.title}"></a></h3>
-        <span class="txt_detail my_post">니용
-						<span class="txt_bar"></span>2023. 1. 5. 15:13
-
-							<span class="my_edit">
-								<span class="txt_bar"></span><a
-                  href="https://abbo.tistory.com/manage/post/391?returnURL=https://abbo.tistory.com/391"
-                  class="link_detail">수정</a>
-								<span class="txt_bar"></span><a href="#"
-                                                onclick="changeVisibility(391, 0); return false;"
-                                                class="link_detail">공개</a>
-								<span class="txt_bar"></span><a href="#" onclick="deleteEntry(391); return false;"
-                                                class="link_detail">삭제</a>
-							</span>
+        <span class="txt_detail my_post"><span th:text="${detail.author}"></span>
+						<span class="txt_bar"></span><span th:text="${detail.createdAt}">2023. 1. 5. 15:13</span>
 
 					</span>
       </div>
@@ -450,9 +438,6 @@
                 </div>
               </li>
               <li id="none_display_division_for_comment_list_391" style="display: none;"></li>
-              <script type="text/javascript">
-                setInitialEntryComments(391, 1674458666)
-              </script>
             </ul>
 
 
@@ -490,8 +475,6 @@
             </form>
 
           </div>
-          <script type="text/javascript">loadedComments[391] = true;
-          findFragmentAndHighlight(391);</script>
 
         </div>
       </div>
@@ -512,15 +495,9 @@
         <div class="box_aside">
           <strong>최근에 올라온 글</strong>
           <ul class="list_board">
-
-            <li><a href="/392" class="link_board">Engineer와 Developer의 차이에 대해⋯</a></li>
-
-            <li><a href="/391" class="link_board">스타트업 용어 가이드</a></li>
-
-            <li><a href="/390" class="link_board">[2022 회고] 올해 나는 개발자로써 무엇을 했⋯</a></li>
-
-            <li><a href="/389" class="link_board">[Java] 자바 19 에서 달라진 점 코드로 확⋯</a></li>
-
+            <li th:each="recent : ${recents.list}">
+              <a th:href="${recent.href}" class="link_board" th:text="${recent.title}"></a>
+            </li>
           </ul>
         </div>
 
