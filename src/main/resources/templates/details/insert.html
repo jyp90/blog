@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/header :: headerFragment"></head>
+<head>
+  <title>Insert Page</title>
+</head>
+<body>
+<div class="ui container">
+  <form class="ui form" th:action="@{/pages}" method="post" enctype="multipart/form-data">
+    <div class="field">
+      <label>Title</label>
+      <input type="text" placeholder="제목" name="title">
+    </div>
+
+    <div class="field">
+      <select name="category" id="category-id" class="ui fluid dropdown">
+        <option value="">카테고리 선택</option>
+        <th:block th:each="c : ${categories}">
+          <option th:value="${c.name()}" th:text="${c.view}"></option>
+        </th:block>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Content</label>
+      <textarea name="content"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Author</label>
+      <input type="text" placeholder="저자" name="author">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input type="password" name="password" placeholder="입력 비밀번호">
+    </div>
+
+    <button class="positive ui button" type="submit">입력하기</button>
+  </form>
+
+</div>
+<script>
+  $('.dropdown').dropdown();
+</script>
+</body>
+</html>
