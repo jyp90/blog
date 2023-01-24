@@ -45,4 +45,18 @@ public class StringUtils {
 
         return false;
     }
+
+    /**
+     * str 값이 blank 인 경우 대체값으로 리턴
+     * @param str
+     * @param defaultValue
+     * @return
+     */
+    public static String isBlankOrElse(String str, String defaultValue) {
+        return isBlank(str) ? defaultValue : str;
+    }
+
+    public static boolean isFavicon(String str) {
+        return str.equals("favicon.ico");
+    }
 }

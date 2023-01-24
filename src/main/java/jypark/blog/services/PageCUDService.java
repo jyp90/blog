@@ -26,4 +26,12 @@ public class PageCUDService {
         final Documents saved = pageRepository.save(request.toEntity());
         return saved;
     }
+
+    public int addViewCount(Long pageId) {
+        return pageRepository.addViewCount(pageId);
+    }
+
+    public int addLikeCount(Long pageId) {
+        return pageRepository.addLikeCount(pageId);
+    }
 }

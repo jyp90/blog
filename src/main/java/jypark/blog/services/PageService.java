@@ -18,9 +18,12 @@ import org.springframework.stereotype.Service;
 public class PageService {
 
     private final PageRepository pageRepository;
+    private final PageCUDService pageCUDService;
+
 
     public PageDetailPayload getPageById(Long pageId) {
         final Optional<Documents> optionalDocuments = pageRepository.findById(pageId);
+        pageCUDService.addViewCount(pageId);
         return PageDetailPayload.of(optionalDocuments);
     }
 

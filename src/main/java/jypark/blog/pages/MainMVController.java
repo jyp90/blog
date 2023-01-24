@@ -1,6 +1,7 @@
 package jypark.blog.pages;
 
 import static jypark.blog.utils.BlogVariables.*;
+import static jypark.blog.utils.StringUtils.isFavicon;
 
 import jypark.blog.dto.PageListPayload.PageListWrapperDTO;
 import jypark.blog.exceptions.PageNotFoundException;
@@ -37,8 +38,12 @@ public class MainMVController {
         return mv;
     }
 
-    @GetMapping("/{pageId}")
-    public ModelAndView getPages(@PathVariable Long pageId) {
+    @GetMapping("/{pageIdStr}")
+    public ModelAndView getPages(@PathVariable String pageIdStr) {
+        if(isFavicon(pageIdStr)) {
+            return null;
+        }
+        Long pageId = Long.parseLong(pageIdStr);
         final ModelAndView mv = new ModelAndView("details/page2");
         mv.addObject("title", TITLE);
         mv.addObject("detail", pageService.getPageById(pageId));
