@@ -18,12 +18,12 @@ public class PageCUDService {
 
     private final PageRepository pageRepository;
 
-    public ApiPayload<Documents> insert(DocumentInsertRequest request) {
+    public Documents insert(DocumentInsertRequest request) {
         if(!request.getPassword().equals(password)) {
             throw new PasswordBadRequestException();
         }
 
         final Documents saved = pageRepository.save(request.toEntity());
-        return ApiPayload.create(saved);
+        return saved;
     }
 }
