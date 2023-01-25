@@ -1,7 +1,10 @@
 package jypark.blog.dto;
 
+import static jypark.blog.utils.DateFormatterUtils.toCreatedAt;
+
 import java.util.List;
 import jypark.blog.entities.Documents;
+import jypark.blog.entities.enumerates.CategoryType;
 import jypark.blog.utils.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,20 +20,28 @@ public class PageListPayload {
 
     private String author;
     private String title;
-    private String content;
+    private String description;
+
+    private String thumbnail;
+
+    private String category;
 
     private int likeCount;
     private int viewCount;
     private int commentCount;
+    private String created;
 
     public PageListPayload(Documents doc) {
         this.detail = "/" + doc.getId();
         this.author = doc.getAuthor();
         this.title = doc.getTitle();
-        this.content = StringUtils.summarize(doc.getContent());
+        this.thumbnail = doc.getThumbnail();
+        this.description = StringUtils.summarize(doc.getDescription());
+        this.category = doc.getCategoryType() == null ? CategoryType.ifNullThen() : doc.getCategoryType().getView();
         this.likeCount = doc.getLikeCount();
         this.viewCount = doc.getViewCount();
         this.commentCount = doc.getComments().size();
+        this.created = toCreatedAt(doc.getCreatedAt());
     }
 
     @Data

@@ -1,6 +1,5 @@
 package jypark.blog.services;
 
-import jypark.blog.controllers.common.ApiPayload;
 import jypark.blog.dto.DocumentInsertRequest;
 import jypark.blog.entities.Documents;
 import jypark.blog.exceptions.PasswordBadRequestException;

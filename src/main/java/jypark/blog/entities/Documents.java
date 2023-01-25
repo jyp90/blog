@@ -15,8 +15,6 @@ import javax.persistence.OneToMany;
 import jypark.blog.entities.enumerates.CategoryType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Builder.Default;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -37,8 +35,12 @@ public class Documents {
     private String title;
     @Column(columnDefinition = "TEXT")
     private String content;
+
+    private String description;
     private int likeCount;
     private int viewCount;
+
+    private String thumbnail;
 
     @Enumerated(EnumType.STRING)
     private CategoryType categoryType;

@@ -5,6 +5,7 @@ import static jypark.blog.utils.DateFormatterUtils.toCreatedAt;
 import java.util.List;
 import java.util.Optional;
 import jypark.blog.entities.Documents;
+import jypark.blog.entities.enumerates.CategoryType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,7 +43,7 @@ public class PageDetailPayload {
             .author(doc.getAuthor())
             .title(doc.getTitle())
             .content(doc.getContent())
-            .category(doc.getCategoryType() == null ? "카테고리 없음" : doc.getCategoryType().getView())
+            .category(doc.getCategoryType() == null ? CategoryType.ifNullThen() : doc.getCategoryType().getView())
             .likeCount(doc.getLikeCount())
             .viewCount(doc.getViewCount())
             .comments(ReplyPayload.of(doc.getComments()))
