@@ -9,3 +9,4 @@
 * 0.2.0 - Jsoup DOM Parser 추가
 * 0.2.1 - apache common lang3 의존성 추가
 * 0.2.2 - 페이지 내 description, thumbnail 컬럼 추가
+* 0.2.3 - 리스트 화면 기본 세팅 
