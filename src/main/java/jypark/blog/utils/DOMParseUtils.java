@@ -1,17 +1,15 @@
 package jypark.blog.utils;
 
-import java.io.IOException;
-import java.io.StringReader;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.NodeFilter;
 import org.w3c.dom.Node;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
+@Slf4j
 public class DOMParseUtils {
 
     DocumentBuilderFactory factory;
@@ -25,9 +23,10 @@ public class DOMParseUtils {
             this.documentBuilder = factory.newDocumentBuilder();
             this.doc = Jsoup.parse(str);
         } catch (ParserConfigurationException e) {
+            log.error(ExceptionUtils.getStackTrace(e));
             throw new RuntimeException(e);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(ExceptionUtils.getStackTrace(e));
         }
     }
 
