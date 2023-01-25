@@ -24,6 +24,9 @@ public class MainMVController {
     @Value("${insert.key}")
     private String insertKey;
 
+    @Value("${domain}")
+    private String domain;
+
     private final PageService pageService;
 
     private final CategoryService categoryService;
@@ -32,6 +35,8 @@ public class MainMVController {
     public ModelAndView getMainList(Pageable pageable) {
         final ModelAndView mv = new ModelAndView("list");
         final PageListWrapperDTO wrapper = pageService.getPages(pageable);
+        mv.addObject("domain", domain);
+        mv.addObject("key", insertKey);
         mv.addObject("wrapper", wrapper);
         mv.addObject("title", TITLE);
         mv.addObject("rss", RSS_URL);

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/header :: headerFragment"></head>
 <head>
   <meta charset="UTF-8">
   <title th:text="${title}">뇽의 블로그 메인 페이지</title>
-  <link rel="alternate" type="application/rss+xml" th:title="${title}"/>
-  <link rel="stylesheet" th:href="@{/css/style.css}">
-  <link rel="icon" sizes="32x32" th:href="@{/images/favicon.ico}" type="image/png">
 </head>
 <body>
 <div id="dkWrap" class="wrap_skin " style="height: auto !important;">
@@ -16,16 +14,15 @@
           src="https://tistory1.daumcdn.net/tistory/3277145/attach/e8e5bc5a341143eaa68b868f2832721c"
           width="50" height="50" class="img_profile" alt="프로필사진"></a>
       <div class="info_profile">
-        <button type="button" class="btn_name">니용
+        <button id="manage" type="button" class="btn_name">니용
           <span class="ico_skin ico_name"></span>
         </button>
         <ul class="list_name">
-          <li><a href="https://abbo.tistory.com/manage/entry/post" class="link_name">글쓰기</a></li>
-          <li><a href="https://abbo.tistory.com/manage" class="link_name">관리</a></li>
-          <li class="box_division"><a href="https://abbo.tistory.com/tag" class="link_name">태그</a>
+          <li><a target="_blank" th:href="${domain} + '/insert/' + ${key}" class="link_name">글쓰기</a></li>
+          <li class="box_division">
+            <a th:href="${domain} + '/tag/' + ${key}" class="link_name">태그</a>
           </li>
-          <li><a href="https://abbo.tistory.com/guestbook" class="link_name">방명록</a></li>
-          <li><a href="https://abbo.tistory.com/rss" class="link_name">RSS</a></li>
+          <li><a th:href="${domain} + '/rss'" class="link_name">RSS</a></li>
         </ul>
         <p class="txt_condition">ABBO 기술 블로그</p>
       </div>
@@ -55,7 +52,7 @@
 } catch (e) {}">
         <fieldset>
           <legend class="screen_out">검색하기 폼</legend>
-          <label for="tfSearch" class="ico_skin lab_search">검색하기</label>
+<!--          <label for="tfSearch" class="ico_skin lab_search">검색하기</label>-->
           <input type="text" name="search" value="" class="tf_search">
         </fieldset>
       </form>
@@ -435,4 +432,14 @@
   </div>
 </div>
 </body>
+<script>
+  $('#manage').on('click', () => {
+    let div = $('div.area_profile');
+    if(div.hasClass('on')) {
+      div.removeClass('on');
+    } else {
+      div.addClass('on');
+    }
+  })
+</script>
 </html>
