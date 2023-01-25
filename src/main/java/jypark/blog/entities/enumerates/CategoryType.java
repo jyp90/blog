@@ -16,4 +16,8 @@ public enum CategoryType {
     ;
 
     private String view;
+
+    public static String ifNullThen() {
+        return "카테고리 없음";
+    }
 }
