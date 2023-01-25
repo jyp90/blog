@@ -167,8 +167,9 @@
     <div id="cMain" style="height: auto !important;">
       <div class="article_skin" th:each="page: ${wrapper.list}">
         <div class="list_content">
-          <a th:href="${page.detail}" class="thumbnail_post">
-            <img src="//i1.daumcdn.net/thumb/C148x148/?fname=https://blog.kakaocdn.net/dn/ba3vc5/btrXbD7Ll7l/qzkGMkGGynwafYe3xtsBkK/img.jpg"></a>
+          <a th:href="${page.detail}" class="thumbnail_post" th:unless="${#strings.isEmpty(page.thumbnail)}">
+            <img th:src="${page.thumbnail}">
+          </a>
 
           <a th:href="${page.detail}" class="link_post">
             <strong class="tit_post" th:text="${page.title}">[Refactor] 자바 코드 리팩터링하기 - 3부</strong>
@@ -182,8 +183,6 @@
           </div>
         </div>
       </div>
-
-
 
       <div class="area_paging area_paging_list">
 						<span class="inner_paging">

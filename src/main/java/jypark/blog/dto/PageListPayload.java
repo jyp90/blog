@@ -5,7 +5,6 @@ import static jypark.blog.utils.DateFormatterUtils.toCreatedAt;
 import java.util.List;
 import jypark.blog.entities.Documents;
 import jypark.blog.entities.enumerates.CategoryType;
-import jypark.blog.utils.StringUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,7 +35,7 @@ public class PageListPayload {
         this.author = doc.getAuthor();
         this.title = doc.getTitle();
         this.thumbnail = doc.getThumbnail();
-        this.description = StringUtils.summarize(doc.getDescription());
+        this.description = doc.getDescription();
         this.category = doc.getCategoryType() == null ? CategoryType.ifNullThen() : doc.getCategoryType().getView();
         this.likeCount = doc.getLikeCount();
         this.viewCount = doc.getViewCount();
