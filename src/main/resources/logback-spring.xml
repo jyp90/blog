@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <property name="MODULE" value="blog-logs"/>
+  <property name="TIME_FORMAT" value="%d{yyyy-MM-dd HH:mm:ss.SSS}"/>
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="LOCAL_CONSOLE_POLICY">
+    <encoder>
+      <pattern>${TIME_FORMAT} [%thread] %highlight([%-5level]) %cyan(%logger{36}) - %msg %n
+      </pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="INFO_FILE_POLICY">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>
+        <pattern>${TIME_FORMAT} [%thread] [%-5level] %logger{36} - %msg %n</pattern>
+      </Pattern>
+    </encoder>
+    <file>${MODULE}/info/logback.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>${MODULE}/info/%i.log.zip</FileNamePattern>
+      <MinIndex>1</MinIndex>
+      <MaxIndex>10</MaxIndex>
+    </rollingPolicy>
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>100MB</MaxFileSize>
+    </triggeringPolicy>
+  </appender>
+
+  <appender name="ERROR_FILE_POLICY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>ERROR</level>
+    </filter>
+    <file>${MODULE}/error/blog_error.log</file>
+    <encoder>
+      <pattern>${TIME_FORMAT} [%-5level] [%thread] [%logger{36}] - %m%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>${MODULE}/error/%d{yyyy-MM-dd}_%i.error.log</fileNamePattern>
+      <maxFileSize>50MB</maxFileSize>
+      <maxHistory>14</maxHistory>
+      <totalSizeCap>1GB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+
+  <!-- 디버그 레벨의 불필요 로그 off -->
+  <logger level="OFF"
+    name="org.springframework.security.web.access.expression.ExpressionBasedFilterInvocationSecurityMetadataSource"/>
+  <logger level="OFF"
+    name="springfox.documentation.swagger.readers.operation.OperationImplicitParameterReader"/>
+  <logger level="OFF" name="org.springframework.security.web.util.matcher.AntPathRequestMatcher" />
+  <logger level="OFF" name="org.springframework.security.web.FilterChainProxy" />
+  <logger level="OFF" name="org.springframework.security.web.util.matcher.OrRequestMatcher"/>
+  <logger level="OFF" name="org.springframework.security.web.access.intercept.FilterSecurityInterceptor"/>
+  <logger level="OFF" name="org.springframework.security.access.vote.AffirmativeBased"/>
+  <logger level="OFF" name="org.springframework.security.web.header.writers.HstsHeaderWriter"/>
+  <logger level="OFF" name="org.springframework.security.web.authentication.AnonymousAuthenticationFilter"/>
+  <logger level="OFF" name="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
+  <logger level="OFF" name="org.springframework.security.web.access.ExceptionTranslationFilter"/>
+  <logger level="OFF" name="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy"/>
+  <logger level="OFF" name="org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport"/>
+  <logger level="OFF" name="org.hibernate.cfg.AnnotationBinder"/>
+  <!-- -->
+
+  <logger level="TRACE" name="jdbc.sqlonly"/>
+  <logger level="OFF" name="jdbc.sqltiming"/>
+  <logger level="OFF" name="jdbc.audit"/>
+  <logger level="OFF" name="jdbc.resultset"/>
+  <logger level="TRACE" name="jdbc.resultsettable"/>
+  <logger level="OFF" name="jdbc.connection"/>
+
+  <root level="INFO">
+    <springProfile name="local">
+      <appender-ref ref="LOCAL_CONSOLE_POLICY"/>
+    </springProfile>
+    <springProfile name="prod">
+      <appender-ref ref="INFO_FILE_POLICY"/>
+      <appender-ref ref="ERROR_FILE_POLICY"/>
+    </springProfile>
+  </root>
+</configuration>
