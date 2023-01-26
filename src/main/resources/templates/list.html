@@ -183,7 +183,8 @@
 
       <div class="area_paging area_paging_list">
 						<span class="inner_paging">
-							<a class="ico_skin link_prev no-more-prev" th:if="${wrapper.currentPage > 2}" href="/?page=1">이전</a>
+							<a th:if="${wrapper.currentPage == 1}" class="ico_skin link_prev no-more-prev" >이전</a>
+							<a th:if="${wrapper.currentPage > 1}" class="ico_skin link_prev " th:href="${'/?page=' + (wrapper.currentPage - 1)}">이전</a>
 
                 <a th:href="${'/?page=' + p}" class="link_page" th:each="p: ${wrapper.pageNumbers}">
                   <span th:if="${p == wrapper.currentPage}" class="selected" th:text="${p}"></span>
@@ -196,7 +197,8 @@
                   <span class="" th:text="${wrapper.pageTotalSize}"></span>
                 </a>
 
-							<a th:href="${'/?page=' + wrapper.pageTotalSize}" class="ico_skin link_next">다음</a>
+							<a th:if="${wrapper.currentPage == wrapper.pageTotalSize}" class="ico_skin link_next no-more-next" >다음</a>
+							<a th:unless="${wrapper.currentPage == wrapper.pageTotalSize}" th:href="${'/?page=' + (wrapper.currentPage + 1)}" class="ico_skin link_next">다음</a>
 						</span>
       </div>
 
