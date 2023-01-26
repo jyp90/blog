@@ -8,6 +8,7 @@ import jypark.blog.dto.PageListPayload.PageListWrapperDTO;
 import jypark.blog.exceptions.PageNotFoundException;
 import jypark.blog.services.CategoryService;
 import jypark.blog.services.PageService;
+import jypark.blog.services.ProjectService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,8 @@ public class MainMVController {
 
     private final PageService pageService;
 
+    private final ProjectService projectService;
+
     private final CategoryService categoryService;
 
     @GetMapping({"/", "/list", "/index"})
@@ -41,6 +44,7 @@ public class MainMVController {
         mv.addObject("wrapper", wrapper);
         mv.addObject("title", TITLE);
         mv.addObject("rss", RSS_URL);
+        mv.addObject("project", projectService.getPayloadByCondition(page));
         mv.addObject("recents", pageService.getListRecentPages());
         return mv;
     }
@@ -50,9 +54,11 @@ public class MainMVController {
         if(isFavicon(pageIdStr)) {
             return null;
         }
+
         Long pageId = Long.parseLong(pageIdStr);
-        final ModelAndView mv = new ModelAndView("details/page2");
+        final ModelAndView mv = new ModelAndView("details/detail");
         mv.addObject("title", TITLE);
+        mv.addObject("project", projectService.get());
         mv.addObject("detail", pageService.getPageById(pageId));
         mv.addObject("recents", pageService.getDetailRecentPagesExceptId(pageId));
         return mv;
