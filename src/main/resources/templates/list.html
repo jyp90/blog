@@ -183,21 +183,20 @@
 
       <div class="area_paging area_paging_list">
 						<span class="inner_paging">
-							<a class="ico_skin link_prev no-more-prev">이전</a>
+							<a class="ico_skin link_prev no-more-prev" th:if="${wrapper.currentPage > 2}" href="/?page=1">이전</a>
 
-								<a href="/?page=1" class="link_page"><span class="selected">1</span></a>
+                <a th:href="${'/?page=' + p}" class="link_page" th:each="p: ${wrapper.pageNumbers}">
+                  <span th:if="${p == wrapper.currentPage}" class="selected" th:text="${p}"></span>
+                  <span th:unless="${p == wrapper.currentPage}" th:text="${p}"></span>
+                </a>
 
-								<a href="/?page=2" class="link_page"><span class="">2</span></a>
+								<a th:if="${wrapper.currentPage < wrapper.pageTotalSize - 2}" class="link_page"><span class="">···</span></a>
 
-								<a href="/?page=3" class="link_page"><span class="">3</span></a>
+								<a th:if="${wrapper.currentPage < wrapper.pageTotalSize - 1}" th:href="${'/?page=' + wrapper.pageTotalSize}" class="link_page">
+                  <span class="" th:text="${wrapper.pageTotalSize}"></span>
+                </a>
 
-								<a href="/?page=4" class="link_page"><span class="">4</span></a>
-
-								<a class="link_page"><span class="">···</span></a>
-
-								<a href="/?page=38" class="link_page"><span class="">38</span></a>
-
-							<a href="/?page=2" class="ico_skin link_next ">다음</a>
+							<a th:href="${'/?page=' + wrapper.pageTotalSize}" class="ico_skin link_next">다음</a>
 						</span>
       </div>
 

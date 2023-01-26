@@ -6,6 +6,7 @@ import jypark.blog.dto.PageListPayload.PageListWrapperDTO;
 import jypark.blog.dto.RecentPagePayload.RecentPageListPayload;
 import jypark.blog.entities.Documents;
 import jypark.blog.repositories.PageRepository;
+import jypark.blog.utils.PageUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,9 +28,12 @@ public class PageService {
         return PageDetailPayload.of(optionalDocuments);
     }
 
-    public PageListWrapperDTO getPages(Pageable pageable) {
-        final Page<Documents> documents = pageRepository.findAll(pageable);
-        return PageListWrapperDTO.of(documents);
+    public PageListWrapperDTO getPages(int page) {
+        int pageSize = PageUtils.DEFAULT_PAGE_SIZE;
+        final Page<Documents> documents = pageRepository.findAll(
+            PageUtils.pageOf(page - 1, pageSize));
+        int currentPage = page == 0 ? 1 : page;
+        return PageListWrapperDTO.of(documents, currentPage, pageSize);
     }
 
     public RecentPageListPayload getRecentPages(Long pageId) {

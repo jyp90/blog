@@ -5,10 +5,12 @@ import static jypark.blog.utils.DateFormatterUtils.toCreatedAt;
 import java.util.List;
 import jypark.blog.entities.Documents;
 import jypark.blog.entities.enumerates.CategoryType;
+import jypark.blog.utils.PageUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Data
 @AllArgsConstructor
@@ -47,15 +49,29 @@ public class PageListPayload {
     @NoArgsConstructor
     public static class PageListWrapperDTO {
         private List<PageListPayload> list;
-        private int totalCount;
+        private long totalCount;
 
-        public PageListWrapperDTO(List<Documents> documents, int totalCount) {
-            this.list = documents.stream().map(doc -> new PageListPayload(doc)).toList();
+        private int currentPage;
+
+        private long pageTotalSize;
+
+        private List<Long> pageNumbers;
+
+        public PageListWrapperDTO(List<Documents> documents, long totalCount, int currentPage, int pageSize) {
+            this.list = documents.stream().map(PageListPayload::new).toList();
             this.totalCount = totalCount;
+            this.currentPage = currentPage;
+            this.pageTotalSize = PageUtils.getPageTotalSize(totalCount);
+            this.pageNumbers = PageUtils.getPageNumbers(currentPage, totalCount);
         }
 
-        public static PageListWrapperDTO of(Page<Documents> documents) {
-            PageListWrapperDTO dto = new PageListWrapperDTO(documents.getContent(), documents.getTotalPages());
+        public static PageListWrapperDTO of(Page<Documents> documents, Pageable pageable) {
+            PageListWrapperDTO dto = new PageListWrapperDTO(documents.getContent(), documents.getTotalElements(), pageable.getPageNumber(), pageable.getPageSize());
+            return dto;
+        }
+
+        public static PageListWrapperDTO of(Page<Documents> documents, int currentPage, int pageSize) {
+            PageListWrapperDTO dto = new PageListWrapperDTO(documents.getContent(), documents.getTotalElements(), currentPage, pageSize);
             return dto;
         }
     }

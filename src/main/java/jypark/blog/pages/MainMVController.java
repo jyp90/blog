@@ -1,6 +1,7 @@
 package jypark.blog.pages;
 
-import static jypark.blog.utils.BlogVariables.*;
+import static jypark.blog.utils.BlogVariables.RSS_URL;
+import static jypark.blog.utils.BlogVariables.TITLE;
 import static jypark.blog.utils.StringUtils.isFavicon;
 
 import jypark.blog.dto.PageListPayload.PageListWrapperDTO;
@@ -9,11 +10,11 @@ import jypark.blog.services.CategoryService;
 import jypark.blog.services.PageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -32,9 +33,9 @@ public class MainMVController {
     private final CategoryService categoryService;
 
     @GetMapping({"/", "/list", "/index"})
-    public ModelAndView getMainList(Pageable pageable) {
+    public ModelAndView getMainList(@RequestParam(value = "page", defaultValue = "0", required = false) int page) {
         final ModelAndView mv = new ModelAndView("list");
-        final PageListWrapperDTO wrapper = pageService.getPages(pageable);
+        final PageListWrapperDTO wrapper = pageService.getPages(page);
         mv.addObject("domain", domain);
         mv.addObject("key", insertKey);
         mv.addObject("wrapper", wrapper);
