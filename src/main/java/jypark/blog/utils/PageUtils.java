@@ -99,4 +99,8 @@ public class PageUtils {
         }
         return list.stream().filter(l -> l > 0).toList();
     }
+
+    public static Pageable getRecentPageable() {
+        return pageOf(0, "publishAt", Direction.DESC);
+    }
 }

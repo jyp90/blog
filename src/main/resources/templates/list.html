@@ -155,7 +155,7 @@
 
   <div class="area_list">
     <div class="tit_category">
-      <a class="link_category">전체 글 (380)</a>
+      <a class="link_category" th:text="${'전체 글 (' + wrapper.totalCount + ')'}"></a>
     </div>
   </div>
 
@@ -221,15 +221,9 @@
           <div class="box_aside">
             <strong>최근에 올라온 글</strong>
             <ul class="list_board">
-
-              <li><a href="/395" class="link_board">[Refactor] 자바 코드 리팩터링하기 - 3⋯</a></li>
-
-              <li><a href="/394" class="link_board">[Refactor] 자바 코드 리팩터링하기 - 2⋯</a></li>
-
-              <li><a href="/393" class="link_board">[Refactor] 자바 코드 리팩터링하기 - 1⋯</a></li>
-
-              <li><a href="/392" class="link_board">Engineer와 Developer의 차이에 대해⋯</a></li>
-
+              <li th:each="recent : ${recents.list}">
+                <a th:href="${recent.href}" class="link_board" th:text="${recent.title}"></a>
+              </li>
             </ul>
           </div>
 

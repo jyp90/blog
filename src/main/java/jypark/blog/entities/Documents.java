@@ -18,11 +18,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@SQLDelete(sql = "UPDATE documents SET deleted_at IS NOW() WHERE documents_id = ?")
+@Where(clause = "deleted_at is null")
 @Builder
 public class Documents {
 
@@ -47,6 +51,10 @@ public class Documents {
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comments> comments;
+
+    private LocalDateTime publishAt;
+
+    private LocalDateTime deletedAt;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

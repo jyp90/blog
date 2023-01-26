@@ -41,6 +41,7 @@ public class MainMVController {
         mv.addObject("wrapper", wrapper);
         mv.addObject("title", TITLE);
         mv.addObject("rss", RSS_URL);
+        mv.addObject("recents", pageService.getListRecentPages());
         return mv;
     }
 
@@ -53,7 +54,7 @@ public class MainMVController {
         final ModelAndView mv = new ModelAndView("details/page2");
         mv.addObject("title", TITLE);
         mv.addObject("detail", pageService.getPageById(pageId));
-        mv.addObject("recents", pageService.getRecentPages(pageId));
+        mv.addObject("recents", pageService.getDetailRecentPagesExceptId(pageId));
         return mv;
     }
 

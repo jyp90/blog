@@ -9,9 +9,7 @@ import jypark.blog.repositories.PageRepository;
 import jypark.blog.utils.PageUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,9 +34,15 @@ public class PageService {
         return PageListWrapperDTO.of(documents, currentPage, pageSize);
     }
 
-    public RecentPageListPayload getRecentPages(Long pageId) {
-        Pageable pageable = PageRequest.of(0, 5, Direction.DESC, "createdAt");
+    public RecentPageListPayload getDetailRecentPagesExceptId(Long pageId) {
+        Pageable pageable = PageUtils.getRecentPageable();
         final Page<Documents> recentPages = pageRepository.findAll(pageable);
         return RecentPageListPayload.of(recentPages, pageId);
+    }
+
+    public RecentPageListPayload getListRecentPages() {
+        Pageable pageable = PageUtils.getRecentPageable();
+        final Page<Documents> recentPages = pageRepository.findAll(pageable);
+        return RecentPageListPayload.of(recentPages, 0L);
     }
 }
