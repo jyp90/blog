@@ -39,23 +39,17 @@ address,caption,cite,code,dfn,em,var{font-style:normal;font-weight:normal}
 
 /* 레이아웃 */
 html,body{height:100%}
-#kakaoHead{position:absolute;z-index:100;width:100%;height:104px;-webkit-transition:opacity 0.5s;-moz-transition:opacity 0.5s;transition:opacity 0.5s}
-#kakaoHead:before{position:absolute;top:0;left:0;z-index:-1;width:100%;height:72px;content:"";background-color:transparent;opacity:0}
 #wrapper{overflow:hidden;min-width:944px}
 #wrapper.type {overflow:auto;position:relative;top:0;width:100%;height:100%;min-width:1200px;min-height:560px}
 #wrapper.type #content{position:relative;height:100%}
 #wrapper.type #main{display:table;width:100%;height:100%;margin:0 auto;}
-#wrapper.type #mArticle{display:table-cell;vertical-align:middle;}
+#wrapper.type #article{display:table-cell;vertical-align:middle;}
 #wrapper.type .footer_comm{border-top:none;position:absolute;bottom:0}
 #content{width:100%}
 .footer_comm{width:100%;border-top:1px solid #F0F0F0;text-align:center;}
 
 /* header */
 .inner_header{position:relative;z-index:1;min-width:944px;margin:0 auto;}/* 컨텐츠최소값 */
-.kakao_head h1{float:left;margin:40px 0 0 60px;width:24px;height:24px}
-.kakao_head .link_logo{display:block;position:relative;width:24px;height:24px}
-.kakao_head .tit_tistory{display:block;width:24px;height:24px;background-position:0 -30px;-webkit-transition:opacity 0.5s;-moz-transition:opacity 0.5s;transition:opacity 0.5s}
-.kakao_head .tit_tistory_black{position:absolute;top:0;left:0;opacity:0;background-position:0 0}
 .head_type1 .tit_tistory_white{opacity:0}
 .head_type1 .tit_tistory_black{opacity:1}
 
@@ -103,7 +97,7 @@ html,body{height:100%}
 .inner_error{display:table;width:712px;margin:0 auto}
 .error_tistory{display:table-cell;vertical-align:middle}
 .error_tistory.type2{vertical-align:top}
-.error_tistory.type2 #mArticle{vertical-align:top}
+.error_tistory.type2 #article{vertical-align:top}
 .tit_error{display:block;margin:-6px 0 0;font-weight:normal;font-family:Noto Sans Medium,AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif;font-size:36px;line-height:46px;color:#000;letter-spacing:-1.2px}
 .tit_error .br_line,.desc_info .br_line,.desc_error .br_line{display:none;line-height:0;font-size:0}
 .tit_error em{color:#ff5544}
@@ -135,10 +129,9 @@ only screen and (min-resolution: 1.5dppx) {
 
 
 @media all and (max-width:800px){
-  #kakaoHead{position:relative}
   #wrapper.type{min-width:320px}
   #wrapper.type .footer_comm{margin-top:30px}
-  #wrapper.type.error_cont #mArticle {padding-top:50px;vertical-align:top}
+  #wrapper.type.error_cont #article {padding-top:50px;vertical-align:top}
   #wrapper.type.error_cont .footer_comm{position:relative}
   .inner_header{min-width:320px}
   .content_error{position:relative;top:0;bottom:0;width:100%;min-width:320px;margin:0 auto}

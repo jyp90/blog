@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="notFoundFragment">
-  <head th:replace="components/header :: headerFragment"></head>
-  <head>
-    <title>404 Not Found</title>
-    <link rel="stylesheet" th:href="@{/css/error.css}">
-  </head>
   <div id="wrapper" class="type">
     <div id="content" role="main">
       <div id="main">
-        <div style="vertical-align: middle;">
+        <div id="article">
           <div class="content_error">
             <div class="inner_error">
               <div class="error_tistory">
 
                 <div>
-                  <h2 id="kakaoBody" class="screen_out">에러 메세지</h2>
+                  <h2 class="screen_out">에러 메세지</h2>
                   <strong class="tit_error tit_error_type2">존재하지 않는 <span class="br_line"><br></span>페이지에요.</strong>
                   <div class="wrap_btn"><a class="btn_basic" href="javascript:window.history.back();">이전화면</a></div>
                 </div>

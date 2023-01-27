@@ -2,18 +2,20 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
   <title th:if="${detail.isEmpty()}">Not Found</title>
   <title th:unless="${detail.isEmpty()}" th:text="${'[ABBO] ' + detail.title}"></title>
   <link rel="stylesheet" th:href="@{/css/style.css}">
   <link rel="stylesheet" th:href="@{/css/content.css}">
   <link rel="stylesheet" th:href="@{/css/font.css}">
+  <link rel="stylesheet" th:href="@{/css/error.css}">
   <link rel="icon" sizes="32x32" th:href="@{/images/favicon.ico}" type="image/png">
 </head>
 <body>
 
-<div style="height: auto !important;" th:if="${detail.isEmpty()}">
-  <div th:replace="errors/not-found :: notFoundFragment"></div>
-</div>
+<!-- 존재하지 않는 페이지 -->
+<div style="height: auto !important;" th:if="${detail.isEmpty()}" th:replace="errors/not-found :: notFoundFragment"></div>
+
 <div style="height: auto !important;" th:unless="${detail.isEmpty()}">
   <div class="article_skin" style="height: auto !important;">
     <div class="skin_view" style="height: auto !important;">
