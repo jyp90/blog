@@ -22,8 +22,11 @@ public class PageService {
 
     public PageDetailPayload getPageById(Long pageId) {
         final Optional<Documents> optionalDocuments = pageRepository.findById(pageId);
-        pageCUDService.addViewCount(pageId);
-        return PageDetailPayload.of(optionalDocuments);
+        final PageDetailPayload response = PageDetailPayload.of(optionalDocuments);
+        if(response.isNotEmpty()) {
+            pageCUDService.addViewCount(pageId);
+        }
+        return response;
     }
 
     public PageListWrapperDTO getPages(int page) {

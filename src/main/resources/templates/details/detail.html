@@ -2,15 +2,19 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>템플릿 페이지</title>
+  <title th:if="${detail.isEmpty()}">Not Found</title>
+  <title th:unless="${detail.isEmpty()}" th:text="${'[ABBO] ' + detail.title}"></title>
   <link rel="stylesheet" th:href="@{/css/style.css}">
   <link rel="stylesheet" th:href="@{/css/content.css}">
-<!--  <link rel="stylesheet" th:href="@{/css/font.css}">-->
+  <link rel="stylesheet" th:href="@{/css/font.css}">
   <link rel="icon" sizes="32x32" th:href="@{/images/favicon.ico}" type="image/png">
 </head>
 <body>
 
-<div style="height: auto !important;">
+<div style="height: auto !important;" th:if="${detail.isEmpty()}">
+  <div th:replace="errors/not-found :: notFoundFragment"></div>
+</div>
+<div style="height: auto !important;" th:unless="${detail.isEmpty()}">
   <div class="article_skin" style="height: auto !important;">
     <div class="skin_view" style="height: auto !important;">
       <div class="area_title">

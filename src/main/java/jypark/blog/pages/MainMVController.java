@@ -36,8 +36,8 @@ public class MainMVController {
     private final CategoryService categoryService;
 
     @GetMapping({"/", "/list", "/index"})
-    public ModelAndView getMainList(@RequestParam(value = "page", defaultValue = "0", required = false) int page) {
-        final ModelAndView mv = new ModelAndView("list");
+    public ModelAndView getPaginationMainList(@RequestParam(value = "page", defaultValue = "0", required = false) int page) {
+        final ModelAndView mv = new ModelAndView("lists/list-pagination");
         final PageListWrapperDTO wrapper = pageService.getPages(page);
         mv.addObject("domain", domain);
         mv.addObject("key", insertKey);

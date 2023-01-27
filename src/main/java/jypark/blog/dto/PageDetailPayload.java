@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PageDetailPayload {
 
+    private boolean empty;
     private String pageUrl;
     private String author;
     private String title;
@@ -31,10 +32,19 @@ public class PageDetailPayload {
 
     private String createdAt;
 
+    public static PageDetailPayload empty() {
+        PageDetailPayload empty = new PageDetailPayload();
+        empty.empty = true;
+        return empty;
+    }
+
+    public boolean isNotEmpty() {
+        return !this.empty;
+    }
 
     public static PageDetailPayload of(Optional<Documents> optionalDocuments) {
         if(optionalDocuments.isEmpty()) {
-            return null;
+            return empty();
         }
 
         Documents doc = optionalDocuments.get();

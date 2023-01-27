@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="components/header :: headerFragment"></head>
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}"></title>
+</head>
+<body>
+<div id="dkWrap" class="wrap_skin " style="height: auto !important;">
+  <div id="dkHead" role="banner" class="area_head ">
+    <h1 class="screen_out">ABBO 기술 블로그</h1>
+    <div class="area_profile ">
+      <a class="link_profile" href="/"><img
+          src="https://tistory1.daumcdn.net/tistory/3277145/attach/e8e5bc5a341143eaa68b868f2832721c"
+          width="50" height="50" class="img_profile" alt="프로필사진"></a>
+      <div class="info_profile">
+        <button id="manage" type="button" class="btn_name">니용
+          <span class="ico_skin ico_name"></span>
+        </button>
+        <ul class="list_name">
+          <li><a target="_blank" th:href="${domain} + '/insert/' + ${key}" class="link_name">글쓰기</a></li>
+          <li class="box_division">
+            <a th:href="${domain} + '/tag/' + ${key}" class="link_name">태그</a>
+          </li>
+          <li><a th:href="${domain} + '/rss'" class="link_name">RSS</a></li>
+        </ul>
+        <p class="txt_condition">ABBO 기술 블로그</p>
+      </div>
+    </div>
+
+    <button type="button" class="btn_menu">
+      <span class="ico_skin ico_menu">카테고리 메뉴열기</span>
+    </button>
+  </div>
+
+  <div class="dimmed_layer"></div>
+
+  <button type="button" class="btn_close">
+    <span class="ico_skin ico_close">닫기</span>
+  </button>
+
+  <div class="area_menu">
+
+    <div class="area_search">
+      <button type="button" class="btn_search">
+        <span class="ico_skin ico_search">검색하기</span>
+      </button>
+      <form action="#" method="get" class="frm_search" onsubmit="try {
+    window.location.href = '/search' + '/' + looseURIEncode(document.getElementsByName('search')[0].value);
+    document.getElementsByName('search')[0].value = '';
+    return false;
+} catch (e) {}">
+        <fieldset>
+          <legend class="screen_out">검색하기 폼</legend>
+<!--          <label for="tfSearch" class="ico_skin lab_search">검색하기</label>-->
+          <input type="text" name="search" value="" class="tf_search">
+        </fieldset>
+      </form>
+    </div>
+
+
+    <div role="navigation" class="area_navi">
+      <button type="button" class="btn_cate">CATEGORY <span class="ico_skin ico_cate"></span>
+      </button>
+
+      <div class="list_cate">
+        <ul class="tt_category">
+          <li class=""><a href="/category" class="link_tit"> 분류 전체보기 <span
+              class="c_cnt">(380)</span> <img alt="N"
+                                              th:str="@{/images/new_ico_1.gif}"
+                                              style="vertical-align:middle;padding-left:2px;"></a>
+            <ul class="category_list">
+              <li class=""><a href="/category/Git" class="link_item"> Git <span
+                  class="c_cnt">(8)</span> </a></li>
+              <li class=""><a href="/category/Back-end" class="link_item"> Back-end <span
+                  class="c_cnt">(204)</span> <img alt="N"
+                                                  th:str="@{/images/new_ico_1.gif}"
+                                                  style="vertical-align:middle;padding-left:2px;"></a>
+                <ul class="sub_category_list">
+                  <li class=""><a href="/category/Back-end/Java" class="link_sub_item"> Java <span
+                      class="c_cnt">(51)</span> <img alt="N"
+                                                     th:str="@{/images/new_ico_1.gif}"
+                                                     style="vertical-align:middle;padding-left:2px;"></a>
+                  </li>
+                  <li class=""><a href="/category/Back-end/Spring%20Batch" class="link_sub_item">
+                    Spring Batch <span class="c_cnt">(11)</span> </a></li>
+                  <li class=""><a href="/category/Back-end/Spring" class="link_sub_item"> Spring
+                    <span class="c_cnt">(30)</span> </a></li>
+                  <li class=""><a href="/category/Back-end/Node.js" class="link_sub_item"> Node.js
+                    <span class="c_cnt">(19)</span> </a></li>
+                  <li class=""><a href="/category/Back-end/Docker" class="link_sub_item"> Docker
+                    <span class="c_cnt">(3)</span> </a></li>
+                  <li class=""><a href="/category/Back-end/MySQL" class="link_sub_item"> MySQL <span
+                      class="c_cnt">(15)</span> </a></li>
+                  <li class=""><a href="/category/Back-end/MongoDB" class="link_sub_item"> MongoDB
+                    <span class="c_cnt">(1)</span> </a></li>
+                  <li class=""><a href="/category/Back-end/Kotlin" class="link_sub_item"> Kotlin
+                    <span class="c_cnt">(14)</span> </a></li>
+                  <li class=""><a href="/category/Back-end/Thymeleaf" class="link_sub_item">
+                    Thymeleaf <span class="c_cnt">(7)</span> </a></li>
+                  <li class=""><a href="/category/Back-end/%EC%84%9C%EB%B2%84%20%EC%84%A4%EC%A0%95"
+                                  class="link_sub_item"> 서버 설정 <span class="c_cnt">(33)</span> </a>
+                  </li>
+                </ul>
+              </li>
+              <li class=""><a href="/category/Front-end" class="link_item"> Front-end <span
+                  class="c_cnt">(54)</span> </a>
+                <ul class="sub_category_list">
+                  <li class=""><a href="/category/Front-end/NextJS" class="link_sub_item"> NextJS
+                    <span class="c_cnt">(9)</span> </a></li>
+                  <li class=""><a href="/category/Front-end/TypeScript" class="link_sub_item">
+                    TypeScript <span class="c_cnt">(16)</span> </a></li>
+                  <li class=""><a href="/category/Front-end/React" class="link_sub_item"> React
+                    <span class="c_cnt">(7)</span> </a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/category/Self%20Study" class="link_item"> Self Study <span
+                  class="c_cnt">(107)</span> <img alt="N"
+                                                  th:str="@{/images/new_ico_1.gif}"
+                                                  style="vertical-align:middle;padding-left:2px;"></a>
+                <ul class="sub_category_list">
+                  <li class=""><a href="/category/Self%20Study/macOS" class="link_sub_item"> macOS
+                    <span class="c_cnt">(17)</span> </a></li>
+                  <li class=""><a href="/category/Self%20Study/Developer%20Life"
+                                  class="link_sub_item"> Developer Life <span
+                      class="c_cnt">(66)</span> </a></li>
+                </ul>
+              </li>
+              <li class=""><a href="/category/Archieve" class="link_item"> Archieve <span
+                  class="c_cnt">(5)</span> </a>
+                <ul class="sub_category_list">
+                  <li class=""><a href="/category/Archieve/Ruby%20%26%20Jekyll"
+                                  class="link_sub_item"> Ruby &amp; Jekyll <span
+                      class="c_cnt">(3)</span> </a></li>
+                  <li class=""><a href="/category/Archieve/Introduction" class="link_sub_item">
+                    Introduction <span class="c_cnt">(1)</span> </a></li>
+                  <li class=""><a href="/category/Archieve/%EA%B8%B0%ED%9A%8D"
+                                  class="link_sub_item"> 기획 <span class="c_cnt">(1)</span> </a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+
+        <ul class="menu_profile">
+          <li><a href="https://abbo.tistory.com/guestbook">방명록</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide">
+
+
+  <div class="area_list">
+    <div class="tit_category">
+      <a class="link_category" th:text="${'전체 글 (' + wrapper.totalCount + ')'}"></a>
+    </div>
+  </div>
+
+
+  <div id="dkContent" class="cont_skin" role="main" style="height: auto !important;">
+    <div id="cMain" style="height: auto !important;">
+      <div class="article_skin" th:each="page: ${wrapper.list}">
+        <div class="list_content">
+          <a th:href="${page.detail}" class="thumbnail_post" th:unless="${#strings.isEmpty(page.thumbnail)}">
+            <img th:src="${page.thumbnail}">
+          </a>
+
+          <a th:href="${page.detail}" class="link_post">
+            <strong class="tit_post" th:text="${page.title}">[Refactor] 자바 코드 리팩터링하기 - 3부</strong>
+            <p class="txt_post" th:text="${page.description}">이전 글에 이어서 자바 코드를 리팩터링하는 기본적인 방법과 그 내용을 코드를 통하여 조금 더 이해하기 쉽도록 적어보려고 합니다. 리팩터링 1부 - https://abbo.tistory.com/393 [Refactor] 자바 코드 리팩터링하기 - 1부 안녕하세요~ 오늘은 개발자의 숙명과도 같은 코드 리팩터링에 대해 알아보고 제가 진행하는 코드 리팩터링 방법에 대해 기술해보려 합니다. 가장 먼저 리팩터링의 정의를 먼저 알아야 합니다. abbo.tistory.com 리팩터링 2부 - https://abbo.tistory.com/394 [Refactor] 자바 코드 리팩터링하기 - 2부 이전 글에 이어서 자바 코드를 리팩터링하는 기본적인 방법과 그 내용을 코드를 통하여 조금 더 이해하기 쉽도록 적어보려고 합니다..</p>
+          </a>
+          <div class="detail_info">
+            <a th:href="${'/category/' + page.category}" class="link_cate" th:text="${page.category}">Back-end/Java</a>
+            <span class="txt_bar"></span>
+            <span th:text="${page.created}"></span>
+            <!--      2023. 1. 27. 08:14-->
+          </div>
+        </div>
+      </div>
+
+      <div class="area_paging area_paging_list">
+						<span class="inner_paging">
+							<a th:if="${wrapper.currentPage == 1}" class="ico_skin link_prev no-more-prev" >이전</a>
+							<a th:if="${wrapper.currentPage > 1}" class="ico_skin link_prev " th:href="${'/?page=' + (wrapper.currentPage - 1)}">이전</a>
+
+                <a th:href="${'/?page=' + p}" class="link_page" th:each="p: ${wrapper.pageNumbers}">
+                  <span th:if="${p == wrapper.currentPage}" class="selected" th:text="${p}"></span>
+                  <span th:unless="${p == wrapper.currentPage}" th:text="${p}"></span>
+                </a>
+
+								<a th:if="${wrapper.currentPage < wrapper.pageTotalSize - 2}" class="link_page"><span class="">···</span></a>
+
+								<a th:if="${wrapper.currentPage < wrapper.pageTotalSize - 1}" th:href="${'/?page=' + wrapper.pageTotalSize}" class="link_page">
+                  <span class="" th:text="${wrapper.pageTotalSize}"></span>
+                </a>
+
+							<a th:if="${wrapper.currentPage == wrapper.pageTotalSize}" class="ico_skin link_next no-more-next" >다음</a>
+							<a th:unless="${wrapper.currentPage == wrapper.pageTotalSize}" th:href="${'/?page=' + (wrapper.currentPage + 1)}" class="ico_skin link_next">다음</a>
+						</span>
+      </div>
+
+      <div class="area_paging area_paging_simple">
+        <div class="inner_paging">
+          <a class="link_prev no-more-prev">
+            <span class="ico_skin ico_prev"></span>이전
+          </a>
+
+          <a href="/?page=2" class="link_next ">
+            다음<span class="ico_skin ico_next"></span>
+          </a>
+        </div>
+      </div>
+
+
+      <div id="mEtc" class="wrap_etc" style="height: auto !important;">
+        <div class="inner_aside" style="height: auto !important;">
+          <div class="revenue_unit_wrap">
+          </div>
+          <!-- 최근에 올라온 글 -->
+          <div class="box_aside">
+            <strong>최근에 올라온 글</strong>
+            <ul class="list_board">
+              <li th:each="recent : ${recents.list}">
+                <a th:href="${recent.href}" class="link_board" th:text="${recent.title}"></a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 방문자수 -->
+          <div class="box_aside lst">
+            <dl class="list_total">
+              <dt>Total</dt>
+              <dd th:text="${project.total}"></dd>
+            </dl>
+            <dl class="list_visitor">
+              <dt>Today</dt>
+              <dd th:text="${project.today}"></dd>
+            </dl>
+            <dl class="list_visitor">
+              <dt>Yesterday</dt>
+              <dd th:text="${project.yesterday}"></dd>
+            </dl>
+          </div>
+
+          <!-- 링크 -->
+          <div class="box_aside">
+            <strong>링크</strong>
+            <ul class="list_board">
+
+            </ul>
+          </div>
+
+          <!-- 태그 클라우드 -->
+          <div class="box_aside">
+            <strong>TAG</strong>
+            <ul class="list_tag">
+
+              <li><a href="/tag/%EC%BD%94%ED%8B%80%EB%A6%B0" class="link_tag cloud3">코틀린</a></li>
+
+              <li><a href="/tag/Spring%20Batch" class="link_tag cloud3">Spring Batch</a></li>
+
+              <li><a href="/tag/%EC%BD%94%EB%A1%9C%EB%82%98%20%ED%99%95%EC%A7%84"
+                     class="link_tag cloud4">코로나 확진</a></li>
+
+              <li><a href="/tag/Java" class="link_tag cloud2">Java</a></li>
+
+              <li><a href="/tag/JavaScript" class="link_tag cloud1">JavaScript</a></li>
+
+              <li><a href="/tag/jenkins" class="link_tag cloud4">jenkins</a></li>
+
+              <li><a href="/tag/Kotlin" class="link_tag cloud3">Kotlin</a></li>
+
+              <li><a href="/tag/MySQL" class="link_tag cloud3">MySQL</a></li>
+
+              <li><a href="/tag/Thymeleaf" class="link_tag cloud3">Thymeleaf</a></li>
+
+              <li><a href="/tag/%EA%B0%9C%EB%B0%9C%EC%9E%90" class="link_tag cloud3">개발자</a></li>
+
+              <li><a href="/tag/TypeScript" class="link_tag cloud3">TypeScript</a></li>
+
+              <li><a href="/tag/react" class="link_tag cloud4">react</a></li>
+
+              <li><a href="/tag/AWS" class="link_tag cloud4">AWS</a></li>
+
+              <li><a href="/tag/Developer" class="link_tag cloud3">Developer</a></li>
+
+              <li><a href="/tag/%EC%BD%94%EB%94%A9" class="link_tag cloud3">코딩</a></li>
+
+              <li><a href="/tag/%EA%B0%9C%EB%B0%9C" class="link_tag cloud4">개발</a></li>
+
+              <li><a href="/tag/Database" class="link_tag cloud4">Database</a></li>
+
+              <li><a href="/tag/ubuntu" class="link_tag cloud4">ubuntu</a></li>
+
+              <li><a href="/tag/git" class="link_tag cloud4">git</a></li>
+
+              <li><a href="/tag/Annotation" class="link_tag cloud3">Annotation</a></li>
+
+              <li><a href="/tag/intellij" class="link_tag cloud3">intellij</a></li>
+
+              <li><a href="/tag/Server" class="link_tag cloud4">Server</a></li>
+
+              <li><a href="/tag/%EC%9E%90%EB%B0%94" class="link_tag cloud4">자바</a></li>
+
+              <li><a href="/tag/JPA" class="link_tag cloud3">JPA</a></li>
+
+              <li><a href="/tag/redis" class="link_tag cloud4">redis</a></li>
+
+              <li><a href="/tag/%EC%9D%B8%ED%85%94%EB%A6%AC%EC%A0%9C%EC%9D%B4"
+                     class="link_tag cloud4">인텔리제이</a></li>
+
+              <li><a href="/tag/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8"
+                     class="link_tag cloud3">자바스크립트</a></li>
+
+              <li><a href="/tag/blockchain" class="link_tag cloud4">blockchain</a></li>
+
+              <li><a href="/tag/next%20js" class="link_tag cloud4">next js</a></li>
+
+              <li><a href="/tag/%ED%83%80%EC%9E%84%EB%A6%AC%ED%94%84"
+                     class="link_tag cloud4">타임리프</a></li>
+
+            </ul>
+            <a href="https://abbo.tistory.com/tag" class="link_more">more</a>
+          </div>
+
+          <!-- 달력 -->
+          <div class="box_aside">
+            <table class="tt-calendar" cellpadding="0" cellspacing="1"
+                   style="width: 100%; table-layout: fixed">
+              <caption class="cal_month"><a href="/archive/202212" title="1개월 앞의 달력을 보여줍니다.">«</a>
+                &nbsp; <a href="/archive/202301" title="현재 달의 달력을 보여줍니다.">2023/01</a> &nbsp; <a
+                    href="/archive/202302" title="1개월 뒤의 달력을 보여줍니다.">»</a></caption>
+              <thead>
+              <tr>
+                <th class="cal_week2">일</th>
+                <th class="cal_week1">월</th>
+                <th class="cal_week1">화</th>
+                <th class="cal_week1">수</th>
+                <th class="cal_week1">목</th>
+                <th class="cal_week1">금</th>
+                <th class="cal_week1">토</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="cal_week cal_current_week">
+                <td class="cal_day cal_day3 cal_day_sunday">1</td>
+                <td class="cal_day cal_day3">2</td>
+                <td class="cal_day cal_day3">3</td>
+                <td class="cal_day cal_day3">4</td>
+                <td class="cal_day cal_day3"><a href="/archive/20230105" class="cal_click">5</a>
+                </td>
+                <td class="cal_day cal_day3">6</td>
+                <td class="cal_day cal_day3">7</td>
+              </tr>
+              <tr class="cal_week">
+                <td class="cal_day cal_day3 cal_day_sunday">8</td>
+                <td class="cal_day cal_day3">9</td>
+                <td class="cal_day cal_day3">10</td>
+                <td class="cal_day cal_day3">11</td>
+                <td class="cal_day cal_day3">12</td>
+                <td class="cal_day cal_day3">13</td>
+                <td class="cal_day cal_day3">14</td>
+              </tr>
+              <tr class="cal_week">
+                <td class="cal_day cal_day3 cal_day_sunday">15</td>
+                <td class="cal_day cal_day3">16</td>
+                <td class="cal_day cal_day3">17</td>
+                <td class="cal_day cal_day3">18</td>
+                <td class="cal_day cal_day3">19</td>
+                <td class="cal_day cal_day3">20</td>
+                <td class="cal_day cal_day3">21</td>
+              </tr>
+              <tr class="cal_week">
+                <td class="cal_day cal_day3 cal_day_sunday">22</td>
+                <td class="cal_day cal_day3"><a href="/archive/20230123" class="cal_click">23</a>
+                </td>
+                <td class="cal_day cal_day3">24</td>
+                <td class="cal_day cal_day4"><a href="/archive/20230125" class="cal_click">25</a>
+                </td>
+                <td class="cal_day cal_day3"><a href="/archive/20230126" class="cal_click">26</a>
+                </td>
+                <td class="cal_day cal_day3"><a href="/archive/20230127" class="cal_click">27</a>
+                </td>
+                <td class="cal_day cal_day3">28</td>
+              </tr>
+              <tr class="cal_week">
+                <td class="cal_day cal_day3 cal_day_sunday">29</td>
+                <td class="cal_day cal_day3">30</td>
+                <td class="cal_day cal_day3">31</td>
+                <td class="cal_day1 cal_day2"></td>
+                <td class="cal_day1 cal_day2"></td>
+                <td class="cal_day1 cal_day2"></td>
+                <td class="cal_day1 cal_day2"></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 글 보관함 -->
+          <div class="box_aside lst">
+            <strong>글 보관함</strong>
+            <ul class="list_keep">
+
+              <li><a href="/archive/202301" class="link_keep">2023/01</a> (5)</li>
+
+              <li><a href="/archive/202212" class="link_keep">2022/12</a> (24)</li>
+
+              <li><a href="/archive/202211" class="link_keep">2022/11</a> (3)</li>
+
+              <li><a href="/archive/202210" class="link_keep">2022/10</a> (13)</li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="hide">
+  <div id="dkFoot" role="contentinfo" class="area_foot">
+    Blog is powered by
+    <em class="emph_t">Tistory</em> / Designed by
+    <em class="emph_t">Tistory</em>
+  </div>
+</div>
+</body>
+<script>
+  $('#manage').on('click', () => {
+    let div = $('div.area_profile');
+    if(div.hasClass('on')) {
+      div.removeClass('on');
+    } else {
+      div.addClass('on');
+    }
+  })
+</script>
+</html>

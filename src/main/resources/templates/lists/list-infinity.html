@@ -3,7 +3,7 @@
 <head th:replace="components/header :: headerFragment"></head>
 <head>
   <meta charset="UTF-8">
-  <title th:text="${title}">뇽의 블로그 메인 페이지</title>
+  <title th:text="${title}"></title>
 </head>
 <body>
 <div id="dkWrap" class="wrap_skin " style="height: auto !important;">
@@ -67,19 +67,19 @@
         <ul class="tt_category">
           <li class=""><a href="/category" class="link_tit"> 분류 전체보기 <span
               class="c_cnt">(380)</span> <img alt="N"
-                                              src="https://tistory1.daumcdn.net/tistory_admin/blogs/image/category/new_ico_1.gif"
+                                              th:str="@{/images/new_ico_1.gif}"
                                               style="vertical-align:middle;padding-left:2px;"></a>
             <ul class="category_list">
               <li class=""><a href="/category/Git" class="link_item"> Git <span
                   class="c_cnt">(8)</span> </a></li>
               <li class=""><a href="/category/Back-end" class="link_item"> Back-end <span
                   class="c_cnt">(204)</span> <img alt="N"
-                                                  src="https://tistory1.daumcdn.net/tistory_admin/blogs/image/category/new_ico_1.gif"
+                                                  th:str="@{/images/new_ico_1.gif}"
                                                   style="vertical-align:middle;padding-left:2px;"></a>
                 <ul class="sub_category_list">
                   <li class=""><a href="/category/Back-end/Java" class="link_sub_item"> Java <span
                       class="c_cnt">(51)</span> <img alt="N"
-                                                     src="https://tistory1.daumcdn.net/tistory_admin/blogs/image/category/new_ico_1.gif"
+                                                     th:str="@{/images/new_ico_1.gif}"
                                                      style="vertical-align:middle;padding-left:2px;"></a>
                   </li>
                   <li class=""><a href="/category/Back-end/Spring%20Batch" class="link_sub_item">
@@ -116,7 +116,7 @@
               </li>
               <li class=""><a href="/category/Self%20Study" class="link_item"> Self Study <span
                   class="c_cnt">(107)</span> <img alt="N"
-                                                  src="https://tistory1.daumcdn.net/tistory_admin/blogs/image/category/new_ico_1.gif"
+                                                  th:str="@{/images/new_ico_1.gif}"
                                                   style="vertical-align:middle;padding-left:2px;"></a>
                 <ul class="sub_category_list">
                   <li class=""><a href="/category/Self%20Study/macOS" class="link_sub_item"> macOS
