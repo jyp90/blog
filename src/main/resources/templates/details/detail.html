@@ -13,10 +13,13 @@
 </head>
 <body>
 
-<!-- 존재하지 않는 페이지 -->
-<div style="height: auto !important;" th:if="${detail.isEmpty()}" th:replace="errors/not-found :: notFoundFragment"></div>
+<th:block th:if="${detail.isEmpty()}">
+  <!-- 존재하지 않는 페이지 -->
+  <div style="height: auto !important;" th:replace="errors/not-found :: notFoundFragment"></div>
+</th:block>
 
-<div style="height: auto !important;" th:unless="${detail.isEmpty()}">
+<th:block th:unless="${detail.isEmpty()}">
+<div style="height: auto !important;">
   <div class="article_skin" style="height: auto !important;">
     <div class="skin_view" style="height: auto !important;">
       <div class="area_title">
@@ -391,5 +394,7 @@
       </div>
     </div>
   </div>
+
+</th:block>
 </body>
 </html>
