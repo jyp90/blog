@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>만다라트 만들기</title>
+  <link rel="stylesheet" th:href="@{/css/mandalat.css}">
+</head>
+<body>
+
+<div style="width: 100%; max-width: 1080px; max-height: 900px;">
+  <th:block th:if="${detail.isSaved()}">
+    <div class="mand-wrap">
+      <!-- 중심 -->
+      <div class="main-area">
+        <ul class="list-mand">
+          <li class="main">나의 2023</li>
+          <li class="area-a">
+            <p th:text="${detail.getMain().get(0)}"></p>
+          </li>
+          <li class="area-b">
+            <p th:text="${detail.getMain().get(1)}"></p>
+          </li>
+          <li class="area-c">
+            <p th:text="${detail.getMain().get(2)}"></p>
+          </li>
+          <li class="area-d">
+            <p th:text="${detail.getMain().get(3)}"></p>
+          </li>
+          <li class="area-e">
+            <p th:text="${detail.getMain().get(4)}"></p>
+          </li>
+          <li class="area-f">
+            <p th:text="${detail.getMain().get(5)}"></p>
+          </li>
+          <li class="area-g">
+            <p th:text="${detail.getMain().get(6)}"></p>
+          </li>
+          <li class="area-h">
+            <p th:text="${detail.getMain().get(7)}"></p>
+          </li>
+        </ul>
+      </div>
+      <!-- //중심 -->
+      <div class="">
+        <ul class="list-mand">
+          <li class="main area-a">
+            <p th:text="${detail.getMain().get(0)}"></p>
+          </li>
+          <li th:each="e : ${detail.getFirst()}">
+            <p th:text="${e}"></p>
+          </li>
+        </ul>
+      </div>
+      <div class="">
+        <ul class="list-mand">
+          <li class="main area-b">
+            <p th:text="${detail.getMain().get(1)}"></p>
+          </li>
+          <li th:each="e : ${detail.getSecond()}">
+            <p th:text="${e}"></p>
+          </li>
+        </ul>
+      </div>
+      <div class="">
+        <ul class="list-mand">
+          <li class="main area-c">
+            <p th:text="${detail.getMain().get(2)}"></p>
+          </li>
+          <li th:each="e : ${detail.getThird()}">
+            <p th:text="${e}"></p>
+          </li>
+        </ul>
+      </div>
+      <div class="">
+        <ul class="list-mand">
+          <li class="main area-d">
+            <p th:text="${detail.getMain().get(3)}"></p>
+          </li>
+          <li th:each="e : ${detail.getFourth()}">
+            <p th:text="${e}"></p>
+          </li>
+        </ul>
+      </div>
+      <div class="">
+        <ul class="list-mand">
+          <li class="main area-e">
+            <p th:text="${detail.getMain().get(4)}"></p>
+          </li>
+          <li th:each="e : ${detail.getFifth()}">
+            <p th:text="${e}"></p>
+          </li>
+        </ul>
+      </div>
+      <div class="">
+        <ul class="list-mand">
+          <li class="main area-f">
+            <p th:text="${detail.getMain().get(5)}"></p>
+          </li>
+          <li th:each="e : ${detail.getSixth()}">
+            <p th:text="${e}"></p>
+          </li>
+        </ul>
+      </div>
+      <div class="">
+        <ul class="list-mand">
+          <li class="main area-g">
+            <p th:text="${detail.getMain().get(6)}"></p>
+          </li>
+          <li th:each="e : ${detail.getSeventh()}">
+            <p th:text="${e}"></p>
+          </li>
+        </ul>
+      </div>
+      <div class="">
+        <ul class="list-mand">
+          <li class="main area-h">
+            <p th:text="${detail.getMain().get(7)}"></p>
+          </li>
+          <li th:each="e : ${detail.getEighth()}">
+            <p th:text="${e}"></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </th:block>
+  <th:block th:if="${detail.isSaved()}">
+
+  </th:block>
+  <th:block th:unless="${detail.isSaved()}">
+    <table class="tg" style="width: 100%">
+      <thead>
+      <tr th:each="e : ${detail.getFirst()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="e : ${detail.getSecond()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      <tr th:each="e : ${detail.getThird()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      <tr th:each="e : ${detail.getFourth()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      <tr th:each="e : ${detail.getMain()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      <tr th:each="e : ${detail.getFifth()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      <tr th:each="e : ${detail.getSixth()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      <tr th:each="e : ${detail.getSeventh()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      <tr th:each="e : ${detail.getEighth()}">
+        <th class="tg-0lax">
+          <input type="text" th:value="${e}">
+        </th>
+      </tr>
+      </tbody>
+    </table>
+
+  </th:block>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+@charset "UTF-8";
+
+:root {
+  --bg-body: #fff;
+  --bg-color: #000;
+  --theme-a: 239, 83, 80;
+  --theme-b: 255, 167, 38;
+  --theme-c: 255, 202, 40;
+  --theme-d: 102, 187, 106;
+  --theme-e: 41, 182, 246;
+  --theme-f: 92, 107, 192;
+  --theme-g: 126, 87, 194;
+  --theme-h: 236, 64, 122;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  flex-shrink: 0
+}
+
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  flex-shrink: 0
+}
+
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+html,
+i,
+iframe,
+ins,
+kbd,
+label,
+legend,
+li,
+mark,
+menu,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+q,
+ruby,
+s,
+samp,
+section,
+small,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  -webkit-text-size-adjust: none
+}
+
+hr {
+  width: 100%;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  border: 0;
+  height: 1px;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block
+}
+
+html {
+  font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", 돋움, Dotum, "Helvetica Neue", arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  margin: 0 auto;
+  word-wrap: break-word;
+  word-break: keep-all;
+  line-height: 1.35;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-body);
+  color: var(--bg-color);
+  -webkit-font-smoothing: antialiased
+}
+
+body::-webkit-scrollbar {
+  display: none
+}
+
+ol,
+ul {
+  list-style: none
+}
+
+blockquote,
+q {
+  quotes: none
+}
+
+.mand-wrap {
+  width: calc(340px*3);
+  height: calc(340px*3);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "a b c "
+    "d main e"
+    "f g h"
+}
+.mand-wrap li{
+  padding:6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-area {
+  grid-area: main;
+}
+
+.list-mand {
+  display: grid;
+  width: 340px;
+  height: 340px;
+  border: 3px solid #fff;
+  grid-template-columns: repeat(3, minmax(33.3%, auto));
+  grid-template-rows: repeat(3, minmax(33.3%, auto));
+  grid-template-areas:
+    ". . . "
+    ". sub . "
+    ". . .";
+}
+
+.list-mand li {
+  border: 1px solid #fff;
+}
+.list-mand li>*{
+  width:100%;
+  overflow: hidden;
+  text-align: center;
+}
+.list-mand .main {
+  font-weight: bold;
+  grid-area: sub;
+}
+.list-mand *[class*="area-"]{
+  font-size:20px;
+  font-weight: bold;
+}
+.area-a {
+  background-color: rgba(var(--theme-a), .8);
+}
+.area-b {
+  background-color: rgba(var(--theme-b), .8);
+}
+.area-c {
+  background-color: rgba(var(--theme-c), .8);
+}
+.area-d {
+  background-color: rgba(var(--theme-d), .8);
+}
+.area-e {
+  background-color: rgba(var(--theme-e), .8);
+}
+.area-f {
+  background-color: rgba(var(--theme-f), .8);
+}
+.area-g {
+  background-color: rgba(var(--theme-g), .8);
+}
+.area-h {
+  background-color: rgba(var(--theme-h), .8);
+}
+.mand-wrap>div:nth-child(2){
+  background-color: rgba(var(--theme-a), .24);
+} 
+.mand-wrap>div:nth-child(3){
+  background-color: rgba(var(--theme-b), .24);
+} 
+.mand-wrap>div:nth-child(4){
+  background-color: rgba(var(--theme-c), .24);
+} 
+.mand-wrap>div:nth-child(5){
+  background-color: rgba(var(--theme-d), .24);
+} 
+.mand-wrap>div:nth-child(6){
+  background-color: rgba(var(--theme-e), .24);
+} 
+.mand-wrap>div:nth-child(7){
+  background-color: rgba(var(--theme-f), .24);
+} 
+.mand-wrap>div:nth-child(8){
+  background-color: rgba(var(--theme-g), .24);
+} 
+.mand-wrap>div:nth-child(9){
+  background-color: rgba(var(--theme-h), .24);
+} 
